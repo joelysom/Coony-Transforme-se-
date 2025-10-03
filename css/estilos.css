@@ -2,8 +2,8 @@
 
 :root{
     --white: #fff;
-    --black: #2575fc; 
-    --lightBulue: #17a;
+    --black: #258d19; 
+    --lightBulue: #4ea93b;
 }
 
 *{
@@ -18,8 +18,125 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    background: #f2f4f7;
+    /* reserve space for a fixed footer on wide screens */
+    padding-bottom: 0; /* will be set in a media query for wide screens */
 }
+
+/* Branding block placed to the left of the card */
+.brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* alinhamento à esquerda */
+    justify-content: center;
+    max-width: 400px; /* ocupa mais espaço como no Facebook */
+    margin-right: 50px; /* espaço entre o brand e o card */
+}
+
+.brand img {
+    display: none; /* remove a logo antiga caso não queira usar */
+}
+
+.brand .brand-logo {
+    font-size: 56px; /* tamanho grande como no Facebook */
+    font-weight: bold;
+    color: #1877f2; /* azul padrão do Facebook */
+    font-family: Arial, Helvetica, sans-serif; /* fonte semelhante */
+    margin-bottom: 10px;
+}
+
+.brand .brand-text {
+    font-size: 20px;
+    color: #000;
+    line-height: 1.4;
+    max-width: 400px;
+    text-align: left;
+}
+
+
+.brand img{
+    width: 160px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)); /* Soft shadow for SVG content */
+}
+
+/* Footer styles */
+.site-footer{
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #e6e9ef;
+    padding: 22px 20px;
+    box-sizing: border-box;
+}
+.site-footer .footer-inner{
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.site-footer .footer-brand h3{
+    margin: 0 0 6px 0;
+    color: var(--black);
+}
+.site-footer .footer-brand p{
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+}
+.footer-actions{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.footer-lang label{
+    margin-right: 8px;
+    font-size: 14px;
+}
+.footer-lang select{
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #cfd6df;
+    background: #fff;
+}
+.footer-links a{
+    margin-left: 12px;
+    color: #444;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+@media (max-width: 900px){
+    .site-footer .footer-inner{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-actions{
+        margin-top: 12px;
+    }
+}
+
+/* On wide screens, keep footer fixed to bottom and prevent overlap by adding body padding */
+@media (min-width: 901px){
+    .site-footer{
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 40;
+    }
+    body{
+        padding-bottom: 80px; /* reserve space for footer (height + some breathing room) */
+    }
+    /* keep content centered above footer */
+    .site-footer .footer-inner{
+        max-width: 1100px;
+    }
+}
+
 
 .wrapper{
     position: relative;
@@ -233,7 +350,7 @@ form .linkTxt{
     right: 0;
     width: 850px;
     height: 600px;
-    background: #2575fc;
+    background: #4ea93b;
     transform: rotate(10deg) skewY(40deg);
     transform-origin: bottom right;
     transition: 1.5s ease;
@@ -328,4 +445,90 @@ form .linkTxt{
 .wrapper.active .rotate-bg2{
     transform: rotate(-11deg) skewY(-40deg);
     transition-delay: 1.2s;
+}
+
+
+/* Responsive rules: keep .wrapper internals untouched; use scaling and width adjustments so animations continue to work */
+@media (max-width: 1100px){
+    .brand{
+        max-width: 320px;
+        margin-right: 30px;
+    }
+    .brand .brand-text{
+        font-size: 18px;
+    }
+    .brand img{
+        width: 140px;
+    }
+    /* slightly reduce card to fit narrower desktops/laptops */
+    .wrapper{
+        transform: scale(0.95);
+        transform-origin: center center;
+    }
+}
+
+@media (max-width: 900px){
+    /* stack brand above the card on tablets and small laptops */
+    body{
+        flex-direction: column;
+        padding: 30px 0;
+    }
+    .brand{
+        margin-right: 0;
+        margin-bottom: 20px;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 720px;
+    }
+    .brand .brand-text{
+        font-size: 16px;
+        max-width: 680px;
+    }
+    .brand img{
+        width: 150px;
+    }
+    /* visually reduce the wrapper without changing its internals */
+    .wrapper{
+        width: 92%;
+        max-width: 750px;
+        transform: scale(0.92);
+        transform-origin: top center;
+    }
+}
+
+@media (max-width: 600px){
+    /* mobile: make brand compact and scale down the whole card so animations still behave as expected */
+    .brand{
+        margin-bottom: 14px;
+    }
+    .brand img{
+        width: 120px;
+    }
+    .brand .brand-text{
+        font-size: 14px;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .wrapper{
+        width: 94%;
+        transform: scale(0.82);
+        transform-origin: top center;
+    }
+}
+
+@media (max-width: 420px){
+    /* very small phones: a bit more scaling */
+    .brand img{
+        width: 100px;
+    }
+    .brand .brand-text{
+        font-size: 13px;
+        max-width: 260px;
+    }
+    .wrapper{
+        width: 98%;
+        transform: scale(0.74);
+        transform-origin: top center;
+    }
 }

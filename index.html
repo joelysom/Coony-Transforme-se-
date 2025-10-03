@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Register form</title>
+    <link rel="icon" href="img/Logo-BG.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="img/Logo-BG.svg">
+    <title>Coencta+: Indique e Ganhe</title>
     <!--Boxicons CDN-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!--CSS-->
     <link rel="stylesheet" href="css/estilos.css">
-
 </head>
 <body>
     
+    <!-- Branding (logo + placeholder text) placed beside the login/register card -->
+    <div class="brand">
+        <img src="img/Logo.svg" alt="Logo">
+        <p class="brand-text">O Conecta+ ajuda você a se Conectar e Indicar pessoas e obter ganhos com reconhecimentos que fazem parte da sua vida.</p>
+    </div>
+
     <div class="wrapper">
 
         <span class="rotate-bg"></span>
@@ -96,13 +103,33 @@
 
     </div>
 
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h3>Conecta+</h3>
+                <p id="footer-desc">Plataforma que conecta pessoas e permite indicações com reconhecimento.</p>
+            </div>
 
-
-
-
-
-
-    <!--Script.js PAPI-->
+            <div class="footer-actions">
+                <div class="footer-lang">
+                    <label for="langSelect">Idioma:</label>
+                    <select id="langSelect" aria-label="Selecionar idioma">
+                        <option value="pt">Português</option>
+                        <option value="en">English</option>
+                        <option value="jp">日本語</option>
+                        <option value="kr">한국어</option>
+                    </select>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Sobre</a>
+                    <a href="#">Ajuda</a>
+                    <a href="#">Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript -->
     <script src="app.js"></script>
 </body>
 </html>
