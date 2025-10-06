@@ -1,1 +1,1 @@
-# Atividade_Aula03-Transforme-se
+# Projeto Conecta+ para recomendação e indicação
