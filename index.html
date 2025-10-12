@@ -131,5 +131,29 @@
     </footer>
     <!-- JavaScript -->
     <script src="app.js"></script>
+    <script>
+    function redirectByWidth() {
+    const currentUrl = window.location.href;
+
+    if (window.innerWidth > 768) {
+        // Desktop
+        if (!currentUrl.includes("index.html")) {
+        window.location.href = "index.html";
+        }
+    } else {
+        // Mobile
+        if (!currentUrl.includes("mobile.html")) {
+        window.location.href = "mobile.html";
+        }
+    }
+    }
+
+    // Executa no carregamento da página
+    window.addEventListener("load", redirectByWidth);
+
+    // Executa sempre que a janela for redimensionada
+    window.addEventListener("resize", redirectByWidth);
+    </script>
+
 </body>
 </html>
