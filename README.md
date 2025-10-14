@@ -2,7 +2,8 @@
 
 ## Visão Geral
 
-O Conecta+ é uma plataforma web que conecta pessoas, permitindo indicações e reconhecimentos em atividades físicas, eventos esportivos e experiências reais. O projeto foi desenvolvido para proporcionar uma experiência moderna, responsiva e multilíngue, com interfaces distintas para desktop e mobile, além de animações e transições suaves.
+    O Saúde em Movimento (Conny) é mais do que um app, é um convite.
+    Criado para quem quer começar, recomeçar ou simplesmente se sentir bem, o aplicativo conecta pessoas a atividades físicas, eventos esportivos e experiências reais. O projeto foi desenvolvido para proporcionar uma experiência moderna, responsiva e multilíngue, com interfaces distintas para desktop e mobile, além de animações e transições suaves. Esse projeto não é só tecnologia. É saúde pública com roupinha de inovação. Estamos falando de uma solução que pode ser usada por prefeituras, planos de saúde, empresas que querem promover bem-estar para seus funcionários.  
 
 ---
 

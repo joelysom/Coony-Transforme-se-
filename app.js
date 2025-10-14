@@ -25,7 +25,7 @@ const wrapperTexts = {
 const translations = {
     pt: {
         footer: 'Plataforma que conecta pessoas e permite indicações com reconhecimento.',
-        brand: 'O Conecta+ ajuda você a se Conectar e Indicar pessoas e obter ganhos com reconhecimentos que fazem parte da sua vida.',
+        brand: 'O Saúde em Movimento (Conny) é mais do que um app, é um convite.\nCriado para quem quer começar, recomeçar ou simplesmente se sentir bem, o aplicativo conecta pessoas a atividades físicas, eventos esportivos e experiências reais.',
         loginTitle: 'Entrar',
         loginUserLabel: 'Usuário',
         loginPassLabel: 'Senha',
@@ -44,7 +44,7 @@ const translations = {
     },
     en: {
         footer: 'Platform that connects people and enables referrals with recognition.',
-        brand: 'Conecta+ helps you connect and refer people, earning rewards and recognition.',
+        brand: 'Saúde em Movimento (Conny) is more than an app, it is an invitation.\nCreated for those who want to start, restart, or simply feel good, the application connects people to physical activities, sports events, and real experiences.',
         loginTitle: 'Login',
         loginUserLabel: 'Username',
         loginPassLabel: 'Password',
@@ -63,7 +63,7 @@ const translations = {
     },
     jp: {
         footer: '人々をつなぎ、推薦による報酬を可能にするプラットフォーム。',
-        brand: 'Conecta+は、人々を結びつけ、紹介で報酬や認知を得るのを助けます。',
+        brand: 'Saúde em Movimento（Conny）は単なるアプリではなく、招待状です。\n始めたい方、再スタートしたい方、ただ気分を良くしたい方のために作られたこのアプリは、人々をフィットネス、スポーツイベント、リアルな体験へとつなげます。',
         loginTitle: 'ログイン',
         loginUserLabel: 'ユーザー名',
         loginPassLabel: 'パスワード',
@@ -82,7 +82,7 @@ const translations = {
     },
     kr: {
         footer: '사람들을 연결하고 추천으로 보상을 얻을 수 있는 플랫폼입니다.',
-        brand: 'Conecta+는 사람들을 연결하고 추천을 통해 보상과 인정을 얻도록 도와줍니다.',
+        brand: 'Saúde em Movimento(Conny)는 단순한 앱이 아니라 초대입니다.\n시작하고 싶거나, 다시 시작하고 싶거나, 단순히 기분이 좋아지고 싶은 사람들을 위해 만들어진 이 앱은 사람들을 신체 활동, 스포츠 이벤트 및 실제 경험에 연결합니다.',
         loginTitle: '로그인',
         loginUserLabel: '사용자 이름',
         loginPassLabel: '비밀번호',
