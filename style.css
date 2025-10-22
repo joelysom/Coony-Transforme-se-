@@ -136,13 +136,15 @@ footer {
 }
 
 .logo img {
-  width: 55px;
-  height: 55px;
-  margin: 12px 0 18px;
+  width: 155px;
+  height: 155px;
+  /* diminuir margem superior para levantar o logo */
+  margin: -28px 0 18px;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)); /* Soft shadow for SVG content */
 }
 
 .meta-logo img {
-  width: 65px;
+  width: 95px;
   opacity: 0.9;
   transition: opacity 0.3s ease;
 }
@@ -254,9 +256,10 @@ footer {
 }
 
 .meta-logo img {
-  width: 65px;
+  width: 85px;
   opacity: 0.9;
   transition: opacity 0.3s ease;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)); /* Soft shadow for SVG content */
 }
 
 .footer-links {
