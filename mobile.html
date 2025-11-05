@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Painel de Indicações</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/estilos(mobile).css" />
   <link rel="shortcut icon" href="img/Logo-BG.svg">
 </head>
 <body>
@@ -41,18 +41,20 @@
     <!-- CADASTRO -->
     <div class="form-wrapper register" data-lang="Criar nova conta">
 
-      <div class="form-content">
-        <form class="login-form">
-          <input type="text" placeholder="Nome completo" class="input-field" />
-          <input type="email" placeholder="E-mail" class="input-field" />
-          <input type="password" placeholder="Nova senha" class="input-field" />
-          <button type="submit" class="login-btn">Cadastrar</button>
-        </form>
+        <div class="form-content">
+          <form class="login-form" id="register-form">
+            <input type="text" name="name" placeholder="Nome" class="input-field" autocomplete="name" />
+            <input type="tel" name="phone" placeholder="Telefone" class="input-field" inputmode="tel" autocomplete="tel" />
+            <input type="email" name="email" placeholder="E-mail" class="input-field" autocomplete="email" />
+            <input type="password" name="password" placeholder="Senha" class="input-field" autocomplete="new-password" />
+            <input type="password" name="password_confirm" placeholder="Confirmar Senha" class="input-field" autocomplete="new-password" />
+            <button type="submit" class="login-btn">Cadastrar</button>
+          </form>
 
-        <div class="divider"></div>
+          <div class="divider"></div>
 
-        <button class="create-account-btn" id="open-login">Já tem uma conta?</button>
-      </div>
+          <button class="create-account-btn" id="open-login">Já tem uma conta?</button>
+        </div>
 
     </div>
 
