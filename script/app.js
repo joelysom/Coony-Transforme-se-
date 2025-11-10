@@ -158,3 +158,70 @@ if (loginForm) {
         }
     });
 }
+
+// --- Multi-step register form handling ---
+const registerForm = document.querySelector('.form-box.register form#registerForm');
+if (registerForm) {
+    const steps = Array.from(registerForm.querySelectorAll('.register-step'));
+    let current = 0;
+
+    function showStep(i){
+        steps.forEach((s, idx) => {
+            if(idx === i) s.classList.add('active'); else s.classList.remove('active');
+        });
+    }
+
+    // initial
+    showStep(current);
+
+    registerForm.addEventListener('click', (e) => {
+        const t = e.target;
+        if (t.closest('.step-next')) {
+            e.preventDefault();
+            // validate current step inputs
+            const inputs = Array.from(steps[current].querySelectorAll('input'));
+            const invalid = inputs.find(i => i.hasAttribute('required') && !i.value.trim());
+            if (invalid) {
+                invalid.focus();
+                alert('Por favor preencha o campo: ' + (invalid.placeholder || invalid.name));
+                return;
+            }
+            if (current < steps.length - 1) {
+                current += 1;
+                showStep(current);
+            }
+        }
+        if (t.closest('.step-prev')) {
+            e.preventDefault();
+            if (current > 0) {
+                current -= 1;
+                showStep(current);
+            }
+        }
+    });
+
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // final validation: check all required and password match
+        const formData = new FormData(registerForm);
+        const name = formData.get('name')?.trim();
+        const phone = formData.get('phone')?.trim();
+        const email = formData.get('email')?.trim();
+        const password = formData.get('password') || '';
+        const password_confirm = formData.get('password_confirm') || '';
+
+        if (!name || !phone || !email || !password || !password_confirm) {
+            alert('Preencha todos os campos obrigatórios.');
+            return;
+        }
+        if (password !== password_confirm) {
+            alert('As senhas não conferem.');
+            return;
+        }
+
+        // No back-end here: por ora apenas simula sucesso e redireciona para home
+        // Você pode integrar envio via fetch para o backend conforme desejar.
+        alert('Cadastro simulado concluído — implementar envio ao servidor.');
+        // Exemplo: window.location.href = '/pages/home/home.html';
+    });
+}
