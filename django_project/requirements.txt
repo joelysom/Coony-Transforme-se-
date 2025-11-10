@@ -1,0 +1,4 @@
+Django==4.2
+pillow==10.0.0
+
+# Ajuste a versão do Django conforme sua necessidade
