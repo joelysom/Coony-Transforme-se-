@@ -19,11 +19,11 @@ body{
     align-items: center;
     min-height: 100vh;
     background: #f2f4f7;
-    /* reserve space for a fixed footer on wide screens */
-    padding-bottom: 0; /* will be set in a media query for wide screens */
+    /* reservar espaço para rodapé fixo em telas largas */
+    padding-bottom: 0; /* será definido em media query para telas largas */
 }
 
-/* Branding block placed to the left of the card */
+/* Bloco de marca posicionado à esquerda do cartão */
 .brand {
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@ body{
 }
 
 .brand img {
-    display: none; /* remove a logo antiga caso não queira usar */
+    display: none; /* remover a logo antiga caso não queira usar */
 }
 
 .brand .brand-logo {
@@ -58,10 +58,10 @@ body{
     width: 340px;
     height: auto;
     display: block;
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)); /* Soft shadow for SVG content */
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)); /* Sombra suave para conteúdo SVG */
 }
 
-/* Footer styles */
+/* Estilos do rodapé */
 .site-footer{
     width: 100%;
     background: #fff;
@@ -129,9 +129,9 @@ body{
         z-index: 40;
     }
     body{
-        padding-bottom: 80px; /* reserve space for footer (height + some breathing room) */
+        padding-bottom: 80px; /* reservar espaço para rodapé (altura + espaço respiratório) */
     }
-    /* keep content centered above footer */
+    /* manter conteúdo centralizado acima do rodapé */
     .site-footer .footer-inner{
         max-width: 1100px;
     }
@@ -381,7 +381,7 @@ form .linkTxt{
     pointer-events: auto;
 }
 
-/* --- register-step: manter todos os steps na mesma área e mostrar apenas o ativo --- */
+/* --- steps de registro: manter todos os steps na mesma área e mostrar apenas o ativo --- */
 .wrapper .form-box.register .register-step{
     display: none; /* escondido por padrão */
     width: 100%;
@@ -483,7 +483,7 @@ form .linkTxt{
 }
 
 
-/* Responsive rules: keep .wrapper internals untouched; use scaling and width adjustments so animations continue to work */
+/* Regras responsivas: manter internos de .wrapper intactos; usar escala e ajustes de largura para que as animações continuem funcionando */
 @media (max-width: 1100px){
     .brand{
         max-width: 320px;
@@ -495,7 +495,7 @@ form .linkTxt{
     .brand img{
         width: 140px;
     }
-    /* slightly reduce card to fit narrower desktops/laptops */
+    /* reduzir levemente o card para caber em desktops/laptops mais estreitos */
     .wrapper{
         transform: scale(0.95);
         transform-origin: center center;
@@ -503,7 +503,7 @@ form .linkTxt{
 }
 
 @media (max-width: 900px){
-    /* stack brand above the card on tablets and small laptops */
+    /* empilhar brand acima do card em tablets e laptops pequenos */
     body{
         flex-direction: column;
         padding: 30px 0;
@@ -523,7 +523,7 @@ form .linkTxt{
     .brand img{
         width: 150px;
     }
-    /* visually reduce the wrapper without changing its internals */
+    /* reduzir visualmente o wrapper sem alterar seus internos */
     .wrapper{
         width: 92%;
         max-width: 750px;
@@ -533,7 +533,7 @@ form .linkTxt{
 }
 
 @media (max-width: 600px){
-    /* mobile: make brand compact and scale down the whole card so animations still behave as expected */
+    /* mobile: fazer brand compacto e reduzir o card inteiro para que as animações continuem se comportando como esperado */
     .brand{
         margin-bottom: 14px;
     }
@@ -553,7 +553,7 @@ form .linkTxt{
 }
 
 @media (max-width: 420px){
-    /* very small phones: a bit more scaling */
+    /* celulares muito pequenos: um pouco mais de escala */
     .brand img{
         width: 100px;
     }
