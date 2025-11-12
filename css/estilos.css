@@ -12,6 +12,14 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+.info-text.login h2{
+    white-space: nowrap;
+    text-align: center;
+}
+.info-text.register h2{
+    white-space: nowrap;
+    text-align: center;
+}
 
 body{
     display: flex;
