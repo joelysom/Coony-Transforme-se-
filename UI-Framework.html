@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coony Framework UI</title>
+  <link rel="icon" href="img/Logo-BG.svg" type="image/svg+xml">
+  <link href="/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- ==========================
+       COMPONENTE: BRAND / LOGO
+  =========================== -->
+  <section class="brand-block">
+    <img src="img/Logo.svg" alt="Logo" class="brand-logo-img">
+    <p class="brand-text">
+      O Saúde em Movimento (Conny) é mais do que um app, é um convite.
+      Criado para quem quer começar, recomeçar ou simplesmente se sentir bem,
+      o aplicativo conecta pessoas a atividades físicas, eventos esportivos e experiências reais.
+    </p>
+  </section>
+
+  <!-- ==========================
+       COMPONENTE: WRAPPER / CONTAINER
+  =========================== -->
+  <div class="ui-wrapper">
+
+    <!-- Elementos de fundo animados -->
+    <span class="bg-rotate-orange"></span>
+    <span class="bg-rotate-white"></span>
+
+    <!-- ==========================
+         COMPONENTE: FORMULÁRIO LOGIN
+    =========================== -->
+    <div class="ui-form login-form">
+
+      <h2 class="ui-title animation">Entrar</h2>
+
+      <form class="ui-form-body" action="#">
+        <div class="ui-input animation">
+          <input type="text" required>
+          <label>Usuário</label>
+          <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="ui-input animation">
+          <input type="password" required>
+          <label>Senha</label>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        <button type="submit" class="ui-btn animation">Entrar</button>
+
+        <p class="ui-link animation">
+          Não tem uma conta? <a href="#" class="link-register">Cadastre-se</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- ==========================
+         COMPONENTE: TEXTO INFORMATIVO LOGIN
+    =========================== -->
+    <div class="ui-info login-info">
+      <h2 class="animation">Bem-vindo de volta!</h2>
+      <p class="animation">Insira seus dados cadastrados para acessar o programa.</p>
+    </div>
+
+    <!-- ==========================
+         COMPONENTE: FORMULÁRIO CADASTRO
+    =========================== -->
+    <div class="ui-form register-form">
+
+      <h2 class="ui-title animation">Cadastre-se</h2>
+
+      <form class="ui-form-body" action="#">
+        <div class="ui-input animation">
+          <input type="text" required>
+          <label>Usuário</label>
+          <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="ui-input animation">
+          <input type="email" required>
+          <label>E-mail</label>
+          <i class='bx bxs-envelope'></i>
+        </div>
+
+        <div class="ui-input animation">
+          <input type="password" required>
+          <label>Senha</label>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        <button type="submit" class="ui-btn animation">Cadastrar</button>
+
+        <p class="ui-link animation">
+          Já tem uma conta? <a href="#" class="link-login">Entrar</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- ==========================
+         COMPONENTE: TEXTO INFORMATIVO CADASTRO
+    =========================== -->
+    <div class="ui-info register-info">
+      <h2 class="animation">Bem-vindo!</h2>
+      <p class="animation">Insira seus dados para criar uma nova conta.</p>
+    </div>
+
+  </div>
+
+  <!-- ==========================
+       COMPONENTE: FOOTER GLOBAL
+  =========================== -->
+  <footer class="ui-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>Coony</h3>
+        <p>Plataforma que conecta pessoas e permite indicações com reconhecimento.</p>
+      </div>
+
+      <div class="footer-actions">
+        <div class="footer-lang">
+          <label for="langSelect">Idioma:</label>
+          <select id="langSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="jp">日本語</option>
+            <option value="kr">한국어</option>
+          </select>
+        </div>
+        <div class="footer-links">
+          <a href="#">Sobre</a>
+          <a href="#">Ajuda</a>
+          <a href="#">Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

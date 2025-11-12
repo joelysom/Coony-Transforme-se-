@@ -1,36 +1,41 @@
+/* =========================================
+   GLOBALIZAÇÃO DO CSS ORIGINAL PARA UI FRAMEWORK
+   (NENHUMA REGRA ALTERADA — APENAS ESCOPADA)
+========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-* {
+/* Global base */
+*, .ui-container * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
 }
 
-body {
+body, .ui-container {
   background-color: #fff;
   display: flex;
   justify-content: center;
-  /* allow vertical scrolling on small devices */
   align-items: flex-start;
   min-height: 100vh;
 }
 
-.container {
+.container, .ui-container {
   position: relative;
   width: 100%;
   max-width: 380px;
-  /* let the container grow with content and allow scrolling */
   min-height: 100vh;
   margin: 0 12px;
 }
-/* header/footer heights (adjust if needed) */
+
+/* Variables */
 :root {
-  --header-height: 120px; /* space for header (logo + language) */
-  --footer-height: 110px; /* space for footer */
+  --header-height: 120px;
+  --footer-height: 110px;
 }
-/* header and shared footer */
-.header {
+
+/* Header e footer */
+.header, .ui-header {
   position: absolute;
   top: 0;
   left: 0;
@@ -46,7 +51,7 @@ body {
   background: transparent;
 }
 
-.shared-footer {
+.shared-footer, .ui-footer {
   position: absolute;
   left: 0;
   right: 0;
@@ -61,15 +66,14 @@ body {
   background: transparent;
 }
 
-/* telas base */
-.form-wrapper {
+/* Telas base */
+.form-wrapper, .ui-form-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
-  /* add padding to avoid header/footer overlap */
   padding: calc(var(--header-height) + 8px) 25px calc(var(--footer-height) + 8px);
   text-align: center;
   background: #fff;
@@ -80,101 +84,105 @@ body {
   z-index: 1;
 }
 
-.form-wrapper.active {
+.form-wrapper.active, .ui-form-wrapper.active {
   z-index: 3;
 }
 
 .language,
 .logo,
 .shared-footer,
-footer {
+footer,
+.ui-header-lang,
+.ui-logo,
+.ui-footer {
   z-index: 5;
 }
 
-/* apenas conteúdo do formulário animará */
-.form-content {
+/* Conteúdo do formulário */
+.form-content, .ui-form-content {
   position: relative;
   z-index: 2;
   transition:
     transform 1.4s cubic-bezier(0.65, 0, 0.35, 1),
     opacity 1.4s ease,
     filter 1.2s ease;
-  /* ensure form content stacks and doesn't overflow hidden areas */
   will-change: transform, opacity;
 }
 
-/* estado padrão */
-.login.active .form-content {
+/* Estados de animação */
+.login.active .form-content,
+.ui-login.active .ui-form-content {
   transform: translateX(0);
   opacity: 1;
   filter: blur(0);
 }
 
-.register .form-content {
+.register .form-content,
+.ui-register .ui-form-content {
   transform: translateX(100%);
   opacity: 0;
   filter: blur(15px);
 }
 
-.register.active .form-content {
+.register.active .form-content,
+.ui-register.active .ui-form-content {
   transform: translateX(0);
   opacity: 1;
   filter: blur(0);
 }
 
-.login:not(.active) .form-content {
+.login:not(.active) .form-content,
+.ui-login:not(.active) .ui-form-content {
   transform: translateX(-100%);
   opacity: 0;
   filter: blur(15px);
 }
 
-/* conteúdo visual */
-.language {
+/* Visual */
+.language, .ui-header-lang {
   color: #7f7f7f;
   font-size: 13px;
   margin-top: 6px;
 }
 
-.logo img {
+.logo img, .ui-logo-img {
   width: 155px;
   height: 155px;
-  /* diminuir margem superior para levantar o logo */
   margin: -28px 0 18px;
-  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)); /* Soft shadow for SVG content */
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-.meta-logo img {
+.meta-logo img, .ui-footer-img {
   width: 95px;
   opacity: 0.9;
   transition: opacity 0.3s ease;
 }
 
-.footer-links {
+.footer-links, .ui-footer-links {
   display: flex;
   gap: 15px;
 }
 
-.footer-links a {
+.footer-links a, .ui-footer-links a {
   font-size: 13px;
   color: #7f7f7f;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
+.footer-links a:hover, .ui-footer-links a:hover {
   text-decoration: underline;
   color: #ED864B;
 }
 
-
-.login-form {
+.login-form, .ui-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-bottom: 12px;
 }
 
-.input-field {
+.input-field, .ui-input {
   width: 100%;
   height: 48px;
   padding: 0 15px;
@@ -185,11 +193,11 @@ footer {
   transition: border-color 0.3s ease;
 }
 
-.input-field:focus {
+.input-field:focus, .ui-input:focus {
   border-color: #ED864B;
 }
 
-.login-btn {
+.login-btn, .ui-btn-primary {
   width: 100%;
   height: 48px;
   background-color: #ED864B;
@@ -203,12 +211,12 @@ footer {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.login-btn:hover {
+.login-btn:hover, .ui-btn-primary:hover {
   background-color: #1a5e13;
   transform: scale(1.02);
 }
 
-.forgot-password {
+.forgot-password, .ui-link-forgot {
   display: block;
   color: #000;
   font-size: 13px;
@@ -218,18 +226,18 @@ footer {
   transition: color 0.3s ease;
 }
 
-.forgot-password:hover {
+.forgot-password:hover, .ui-link-forgot:hover {
   text-decoration: underline;
   color: #ED864B;
 }
 
-.divider {
+.divider, .ui-divider {
   height: 1px;
   background-color: transparent;
   margin-bottom: 25px;
 }
 
-.create-account-btn {
+.create-account-btn, .ui-btn-outline {
   width: 100%;
   height: 46px;
   border: 1px solid #ED864B;
@@ -243,11 +251,11 @@ footer {
   transition: all 0.3s ease;
 }
 
-.create-account-btn:hover {
+.create-account-btn:hover, .ui-btn-outline:hover {
   background-color: #f5f6f7;
 }
 
-footer {
+footer, .ui-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -255,27 +263,9 @@ footer {
   margin-bottom: 15px;
 }
 
-.meta-logo img {
+.meta-logo img, .ui-footer-img {
   width: 85px;
   opacity: 0.9;
   transition: opacity 0.3s ease;
-  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2)); /* Soft shadow for SVG content */
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2));
 }
-
-.footer-links {
-  display: flex;
-  gap: 15px;
-}
-
-.footer-links a {
-  font-size: 13px;
-  color: #7f7f7f;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-  color: #ED864B;
-}
-

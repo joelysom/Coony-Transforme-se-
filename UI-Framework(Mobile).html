@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coony Mobile UI</title>
+  <link rel="stylesheet" href="css/estilos(mobile).css" />
+  <link rel="shortcut icon" href="img/Logo-BG.svg">
+</head>
+<body>
+  <div class="ui-container">
+
+    <!-- ==========================
+         COMPONENTE: HEADER MOBILE
+    =========================== -->
+    <header class="ui-header">
+      <div class="ui-header-lang" id="ui-lang">Português (Brasil)</div>
+      <div class="ui-logo">
+        <img src="img/Logo.svg" alt="Logo Coony" class="ui-logo-img" />
+      </div>
+    </header>
+
+    <!-- ==========================
+         COMPONENTE: FORM LOGIN
+    =========================== -->
+    <section class="ui-form-wrapper ui-login active" data-lang="Português (Brasil)">
+      <div class="ui-form-content">
+        <form class="ui-form">
+          <input type="text" placeholder="Número do celular ou email" class="ui-input" />
+          <input type="password" placeholder="Senha" class="ui-input" />
+          <button type="submit" class="ui-btn ui-btn-primary">Entrar</button>
+        </form>
+
+        <a href="#" class="ui-link-forgot">Esqueceu a senha?</a>
+
+        <div class="ui-divider"></div>
+
+        <button class="ui-btn ui-btn-outline" id="open-register">Criar nova conta</button>
+      </div>
+    </section>
+
+    <!-- ==========================
+         COMPONENTE: FORM CADASTRO
+    =========================== -->
+    <section class="ui-form-wrapper ui-register" data-lang="Criar nova conta">
+      <div class="ui-form-content">
+        <form class="ui-form" id="register-form">
+          <input type="text" name="name" placeholder="Nome" class="ui-input" autocomplete="name" />
+          <input type="tel" name="phone" placeholder="Telefone" class="ui-input" inputmode="tel" autocomplete="tel" />
+          <input type="email" name="email" placeholder="E-mail" class="ui-input" autocomplete="email" />
+          <input type="password" name="password" placeholder="Senha" class="ui-input" autocomplete="new-password" />
+          <input type="password" name="password_confirm" placeholder="Confirmar Senha" class="ui-input" autocomplete="new-password" />
+          <button type="submit" class="ui-btn ui-btn-primary">Cadastrar</button>
+        </form>
+
+        <div class="ui-divider"></div>
+
+        <button class="ui-btn ui-btn-outline" id="open-login">Já tem uma conta?</button>
+      </div>
+    </section>
+
+    <!-- ==========================
+         COMPONENTE: FOOTER MOBILE
+    =========================== -->
+    <footer class="ui-footer">
+      <div class="ui-footer-logo">
+        <img src="img/Logo.svg" alt="Logo" class="ui-footer-img" />
+      </div>
+      <div class="ui-footer-links">
+        <a href="#">Sobre</a>
+        <a href="#">Ajuda</a>
+        <a href="#">Política</a>
+        <a href="#">Privacidade</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ==========================
+       SCRIPT DE TROCA DE FORMULÁRIOS
+  =========================== -->
+  <script>
+    const login = document.querySelector('.ui-login');
+    const register = document.querySelector('.ui-register');
+    const openRegister = document.getElementById('open-register');
+    const openLogin = document.getElementById('open-login');
+    const uiLang = document.getElementById('ui-lang');
+
+    function updateLang() {
+      const active = document.querySelector('.ui-form-wrapper.active');
+      if (active) uiLang.textContent = active.getAttribute('data-lang') || '';
+    }
+
+    openRegister.addEventListener('click', () => {
+      login.classList.remove('active');
+      register.classList.add('active');
+      updateLang();
+    });
+
+    openLogin.addEventListener('click', () => {
+      register.classList.remove('active');
+      login.classList.add('active');
+      updateLang();
+    });
+
+    document.addEventListener('DOMContentLoaded', updateLang);
+    updateLang();
+  </script>
+
+
+</body>
+</html>
