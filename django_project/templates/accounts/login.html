@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Entrar</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="field">
+      <label>E-mail ou Telefone</label>
+      <input type="text" name="login" value="{{ form.data.login|default_if_none:'' }}">
+    </div>
+    <div class="field">
+      <label>Senha</label>
+      <input type="password" name="password">
+    </div>
+    <button class="btn" type="submit">Entrar</button>
+  </form>
+  <p>Ainda não tem conta? <a href="{% url 'accounts:register' %}">Cadastre-se</a></p>
+{% endblock %}

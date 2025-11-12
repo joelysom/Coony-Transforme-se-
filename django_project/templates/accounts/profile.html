@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Perfil</h2>
+  <p>Bem-vindo(a), {{ request.user.first_name or request.user.username or request.user.email }}</p>
+  <p>Telefone: {{ request.user.phone }}</p>
+  <p>E-mail: {{ request.user.email }}</p>
+  <p><a href="{% url 'accounts:logout' %}">Sair</a></p>
+{% endblock %}

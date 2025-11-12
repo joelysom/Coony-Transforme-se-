@@ -1,11 +1,9 @@
 ### TELA DE MANUTENÇÃO - DESKTOP E MOBILE
 """
-
 Tela_Manutencao.py
 Recriação visual (falsa) da tela mostrada usando Tkinter + Pillow.
 Requer: pip install pillow
 Execute: python login_tela.py
-
 """
 
 import tkinter as tk
