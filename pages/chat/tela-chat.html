@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <link rel="stylesheet" href="../../css/chat.css">
+</head>
+<body>
+
+  <!--
+
+  
+    ILUSTRATIVO
+  
+  
+  -->
+
+
+
+  <div class="container">
+
+    <!-- MENU LATERAL -->
+    <aside class="sidebar">
+    
+      <nav>
+
+        <button class="menu-item active">Campo reservado para conversas de usuário</button>
+        
+      </nav>
+
+    </aside>
+
+    <!-- ÁREA DE CHAT -->
+    <div class="chat-app">
+
+      <header class="chat-header">
+
+        <!-- Informações de com quem está conversando -->
+        <div class="user">
+          <img src="./img/persona.jpg" alt="Amelia">
+          <div class="user-info">
+            <h3>Amelia</h3>
+            <p>Online</p>
+          </div>
+        </div>
+
+        <!-- Botões (Terão ajustes, no momento são ilustrativos)-->
+        <div class="header-icons">
+          <span class="icon"><img src='./img/telefone.png'/></span>
+          <span class="icon"><img src='./img/setaVoltar.png'/></span>
+        </div>
+
+      </header>
+
+      <!-- Área de chat(Ajustes serão feitos)-->
+      <main class="chat-body" id="chatBody">
+
+        <div class="message sent">
+          <div class="bubble">Eu</div>
+          <img src="" alt="Eu" class="avatar">
+          <span class="time">20:21</span>
+        </div>
+
+        <div class="message received">
+          <img src="./img/persona.jpg" alt="Amelia" class="avatar">
+          <div class="bubble">Amelia</div>
+          <span class="time">20:30</span>
+        </div>
+      </main>
+
+      <!-- Parte de envio e escrita de mensagem -->
+      <footer class="chat-footer">
+        <input type="text" id="msgInput" placeholder="Digite uma mensagem...">
+        <button id="sendBtn">➤</button>
+      </footer>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
