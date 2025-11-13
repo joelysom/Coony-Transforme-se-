@@ -1,0 +1,183 @@
+
+.container {
+  background: var(--bg-light); /* mantém fundo global */
+  padding: 28px 24px;
+  border-radius: 0;
+}
+
+
+/* rótulos */
+.label-text {
+  display: block;
+  font-weight: 600;
+  color: var(--text-dark);          /* texto principal do seu tema */
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* INPUT / SELECT - pill com borda laranja fina e sombra
+   usa as variáveis --black (laranja principal) e --lightBulue (hover)
+*/
+.input {
+  width: 100%;
+  height: 48px;
+  padding: 8px 18px;
+  border-radius: 26px; /* pill */
+  border: 2px solid rgba(0,0,0,0.06); /* fallback fino, será sobrescrito abaixo */
+  background: var(--white);
+  box-shadow:
+    0 8px 14px rgba(0,0,0,0.12),
+    0 2px 0 rgba(0,0,0,0.06) inset;
+  font-size: 15px;
+  color: var(--text-dark);
+  outline: none;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+/* aplicar cor laranja do tema à borda */
+.input {
+  border-color: rgba(237,108,75,0.95); /* tom baseado no mock — mantém contraste com as variáveis */
+}
+
+/* foco: brilho usando --lightBulue */
+.input:focus {
+  transform: translateY(-1px);
+  box-shadow:
+    0 12px 24px rgba(0,0,0,0.14),
+    0 2px 0 rgba(237,108,75,0.18) inset;
+  border-color: var(--lightBulue);
+}
+
+/* placeholder */
+.input::placeholder {
+  color: #bfa99a;
+}
+
+/* erro / sucesso (mantendo suas classes utilitárias) */
+.input.input-error {
+  border-color: #ff4d4d;
+  box-shadow: 0 8px 18px rgba(255,77,77,0.12);
+}
+.input.input-success {
+  border-color: #00CC66;
+}
+
+/* espaçamento entre campos */
+.field { margin-bottom: 28px; }
+
+/* SELECT estilizado com seta (usa imagem CSS) */
+select.input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--black) 50%),
+    linear-gradient(135deg, var(--black) 50%, transparent 50%),
+    linear-gradient(to right, var(--white), var(--white));
+  background-position:
+    calc(100% - 20px) calc(1em),
+    calc(100% - 15px) calc(1em),
+    100% 0;
+  background-size:
+    6px 6px,
+    6px 6px,
+    100% 100%;
+  background-repeat: no-repeat;
+  padding-right: 46px; /* espaço para seta */
+  cursor: pointer;
+}
+
+/* botões circulares laranja (voltar / ajuda) */
+.icon-btn {
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border: 2px solid var(--black);
+  background: transparent;
+  color: var(--text-dark);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+/* título central do card */
+.card-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* força o h2 a ficar centralizado */
+}
+
+/* Título no centro como na primeira imagem */
+.card-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: center;
+  flex: none;
+  padding: 0 70px; /* espaço lateral para não bater nos botões */
+}
+
+/* botão principal (Finalizar) - usa --black como cor de destaque */
+.btn-primary {
+  background: linear-gradient(180deg, var(--black) 0%, var(--lightBulue) 100%);
+  color: var(--white);
+  border: none;
+  min-height: 48px;
+  padding: 12px 28px;
+  border-radius: 26px;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  cursor: pointer;
+}
+.btn-primary:hover {
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+
+/* botao secundario no estilo do tema */
+.btn-secondary {
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--border-light);
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* preview do avatar */
+.preview-avatar {
+  width:72px;
+  height:72px;
+  border-radius: 12px;
+  object-fit:cover;
+  border:2px solid var(--white);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+/* upload button (pill) */
+.upload-btn {
+  height:44px;
+  border-radius:999px;
+  border:1px solid var(--black);
+  background: var(--white);
+  padding:10px 16px;
+  cursor:pointer;
+  font-weight:700;
+  color: var(--black);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.upload-btn:hover {
+  background: var(--lightBulue);
+  color: var(--white);
+  border-color: var(--lightBulue);
+}
+
+/* responsividade móvel */
+@media (max-width: 480px) {
+  .label-text { font-size: 15px; }
+  .input { height:48px; font-size:15px; padding:10px 18px; }
+  .field { margin-bottom: 22px; }
+  .container { padding: 20px; }
+}
