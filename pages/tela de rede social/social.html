@@ -1,27 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/social.css">
-    <title>tela de rede social</title>
+    <title>Goony - Dashboard Social</title>
+    <link rel="stylesheet" href="../../css/social.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Minha Rede Social</h1>
-    </header>
-    <main>
-        <section class="post">
-            <h2>Postagem 1</h2>
-            <p>Este é o conteúdo da primeira postagem na minha rede social.</p>
-        </section>
-        <section class="post">
-            <h2>Postagem 2</h2>
-            <p>Este é o conteúdo da segunda postagem na minha rede social.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Minha Rede Social</p>
+    
+    <div class="dashboard-container">
+        
+        <iframe src="/component/sidebar.html" class="sidebar-frame" frameborder="0"></iframe> 
+
+        <main class="dashboard-feed"> 
+            
+            <div class="feed-header">
+                <div class="search-marathon" style="display: none;">
+                    <input type="text" placeholder="Buscar postagens ou usuários...">
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+                <nav class="feed-nav">
+                    <a href="#" class="nav-item active">Feed</a>
+                    <a href="#" class="nav-item">Seguindo</a>
+                    <a href="#" class="nav-item">Eventos P/ Mim</a>
+                    <a href="#" class="nav-item">Novidades</a>
+                    <a href="#" class="nav-item">Em Alta</a>
+                </nav>
+            </div>
+
+            <div class="create-post">
+                <p><i class="fas fa-check-circle"></i> Post criado com sucesso!</p>
+                <div class="post-input-area">
+                    <img src="https://i.pinimg.com/1200x/cf/f0/85/cff0856affba5e16e9ce20f4414621e8.jpg" alt="Seu avatar" class="avatar-sm">
+                    <input type="text" placeholder="Compartilhe a sua conquista...">
+                    <div class="post-options">
+                        <i class="fas fa-camera"></i>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <button class="post-btn">Postar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feed-posts-container">
+                <div class="post-card">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/1200x/cf/f0/85/cff0856affba5e16e9ce20f4414621e8.jpg" alt="Avatar de Maria Eduarda" class="avatar-sm">
+                        <div class="user-details">
+                            <strong>Maria Eduarda</strong>
+                            <p>Recife • 2h</p>
+                        </div>
+                        <i class="fas fa-ellipsis-h menu-icon"></i>
+                    </div>
+                    <div class="post-body">
+                        <p>Completei meu treino de corrida de 5km em 30 minutos!</p>
+                        <div class="post-image-container">
+                            <img src="https://i.pinimg.com/736x/e1/a0/0b/e1a00be8b14835ed7ae9a35ac5ce59a8.jpg" alt="Mulher correndo ao pôr do sol" class="post-image">
+                        </div>
+                    </div>
+                    <div class="post-actions">
+                        <a href="#"><i class="fas fa-comment"></i> Ver comentários</a>
+                        <div class="likes-shares">
+                            <i class="fas fa-heart liked"></i> 32
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                    </div>
+                    <div class="post-comment">
+                        <div class="comment-item">
+                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs2-extra.glbimg.com%2FRRROEeOCC7U_JCz2L5qcTlvaF1s%3D%2F1180x0%2Fsmart%2Ffilters%3Astrip_icc()%2Fi.s3.glbimg.com%2Fv1%2FAUTH_1f551ea7087a47f39ead75f64041559a%2Finternal_photos%2Fbs%2F2024%2F0%2FJ%2F1xmDGkRP6e8ptcm35y0Q%2Fwhatsapp-image-2024-01-26-at-11.01.00.jpeg&f=1&nofb=1&ipt=35f72c14ab9332b23eaf46ab9533609a0ff237ce1c3a9e6a5e03b6627a4c83d7" alt="Avatar de Laura" class="avatar-xs">
+                            <div class="comment-content">
+                                <strong>Laura</strong> Parabéns, Duda!!
+                            </div>
+                        </div>
+                        <div class="add-comment">
+                            <input type="text" placeholder="Adicione um comentário">
+                            <i class="fas fa-paper-plane" style="color:var(--primary); margin-left:10px; cursor:pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="post-card">
+                    <div class="post-header">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F6e%2F71%2F0e%2F6e710ed0cae7cc8d90119f95e55c764f.jpg&f=1&nofb=1&ipt=4645f1a0ffb70f4419445e453f4af3ea3498b58b016f6d2421e275422fbcd960" alt="Avatar de Emily Barbosa" class="avatar-sm">
+                        <div class="user-details">
+                            <strong>Emily Barbosa</strong>
+                            <p>Recife • 4h</p>
+                        </div>
+                        <i class="fas fa-ellipsis-h menu-icon"></i>
+                    </div>
+                    <div class="post-body">
+                        <p>Finalmente conquistei minha primeira medalha em uma corrida de 5km!</p>
+                    </div>
+                    <div class="post-actions">
+                        <a href="#"><i class="fas fa-comment"></i> Ver comentários</a>
+                        <div class="likes-shares">
+                            <i class="fas fa-heart"></i> 15
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-sidebar-goony">
+            <div class="item-card-right search-marathon">
+                <h4>Buscar Maratona</h4>
+                <input type="text" placeholder="Buscar eventos...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+
+            <div class="item-card-right follow-suggestions">
+                <h4>Sugestões para Seguir</h4>
+                <div class="suggestion-item">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1534528741775-53994a69daeb%3Fixlib%3Drb-1.2.1%26ixid%3DMnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ydHJhaXR8ZW58MHx8MHx8%26w%3D1000%26q%3D80&f=1&nofb=1&ipt=4645f1a0ffb70f4419445e453f4af3ea3498b58b016f6d2421e275422fbcd960" alt="Avatar de João Silva" class="avatar-xs">
+                    <div class="user-details">
+                        <strong>João Silva</strong>
+                        <p>Maratonista</p>
+                    </div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+                <div class="suggestion-item">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fexpertphotography.com%2Fwp-content%2Fuploads%2F2018%2F10%2Fbusiness-portrait-photography-studio.jpg&f=1&nofb=1&ipt=4645f1a0ffb70f4419445e453f4af3ea34998b58b016f6d2421e275422fbcd960" alt="Avatar de Ana Souza" class="avatar-xs">
+                    <div class="user-details">
+                        <strong>Ana Souza</strong>
+                        <p>Personal Trainer</p>
+                    </div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+                <a href="#" class="ver-mais">Ver mais</a>
+            </div>
+
+            <div class="item-card-right marathon-moments">
+                <h4>Momentos da Maratona</h4>
+                <p>Post 1 sobre o evento...</p>
+                <p>Post 2 sobre o evento...</p>
+                <p>Post 3 sobre o evento...</p>
+                <a href="#" class="ver-mais">Ver todos</a>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer class="mobile-navbar-footer">
+        <a href="#" class="nav-item-mobile active"><i class="fas fa-home"></i></a>
+        <a href="#" class="nav-item-mobile"><i class="fas fa-running"></i></a>
+        <a href="#" class="nav-item-mobile plus"><i class="fas fa-plus-circle"></i></a>
+        <a href="#" class="nav-item-mobile"><i class="fas fa-bell"></i></a>
+        <a href="#" class="nav-item-mobile avatar-mobile">
+            <img src="https://i.pinimg.com/1200x/cf/f0/85/cff0856affba5e16e9ce20f4414621e8.jpg" alt="Seu avatar" class="avatar-xs">
+        </a>
     </footer>
+
+    
 </body>
 </html>

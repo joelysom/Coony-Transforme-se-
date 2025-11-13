@@ -1,23 +1,768 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
-:root{
+/* =========================================================
+    ESTILOS BASE E VARIÁVEIS (ATUALIZADO PARA #EC8441)
+    ========================================================= */
+:root {
+    --bg: #f2f4f7;
     --white: #fff;
-    --black: #ED864B; 
-    --lightBulue: #eb9766;
+    --primary: #EC8441; /* COR PRIMÁRIA: LARANJA */
+    --text: #1d1d1d;
+    --gray: #666;
+    --border: #ddd;
+    --primary-dark: #cc6c2d; /* Versão mais escura para hover */
 }
 
-*{
+/* Reset */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body {
     font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
 }
 
-body{
+/* 1. LAYOUT PRINCIPAL (3 COLUNAS - DESKTOP) */
+.dashboard-container {
+    display: grid;
+    /* Ajustado para usar 'minmax' na coluna central para melhor adaptação */
+    grid-template-columns: 250px 1fr 300px; 
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* NOVO: Estilo para o IFRAME da Sidebar */
+.sidebar-frame {
+    border: none;
+    width: 100%;
+    height: 100%;
+    position: sticky; 
+    top: 20px;
+    align-self: start;
+}
+
+/* ---------------------------------------------------------
+    COMPONENTES GERAIS (NÃO ALTERADO)
+    --------------------------------------------------------- */
+/* ... (Avatares, placeholders e estilos gerais mantidos) ... */
+
+.avatar-placeholder {
+    background-color: #e1e9ee;
+    border: 1px solid var(--border);
+}
+.avatar-sm {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.avatar-xs {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+}
+.post-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #e1e9ee;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+.post-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px; 
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+
+/* 2. SIDEBAR ESQUERDA (DESKTOP) */
+.dashboard-sidebar {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    padding: 20px 0;
+    position: sticky; 
+    top: 20px;
+    height: fit-content;
+}
+
+.logo-goony {
+    text-align: center;
+    margin-bottom: 20px;      
+}
+
+.nav-menu ul {
+    list-style: none; 
+}
+
+.nav-menu li {
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: #f2f4f7; 
-    padding-bottom: 0; 
+    padding: 12px 20px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: var(--text);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-menu li i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+.nav-menu li:hover {
+    background-color: rgba(236, 132, 65, 0.1); 
+    color: var(--primary);
+}
+
+.nav-menu li.active {
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 0;
+}
+
+/* Botão "Criar Evento" */
+.create-event-btn {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.create-event-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Informações do Usuário no Rodapé da Sidebar */
+.user-info-bottom {
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    margin-top: 50px;
+    border-top: 1px solid var(--border);
+}
+
+.user-info-bottom .user-details {
+    margin-left: 10px;
+}
+
+.user-info-bottom .user-details p {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.user-info-bottom .user-details a {
+    color: var(--gray);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+
+/* 3. CONTEÚDO PRINCIPAL (FEED) */
+.dashboard-feed {
+    padding-top: 0;
+}
+
+/* Cabeçalho do Feed (Abas) */
+.feed-header {
+    position: sticky;
+    top: 0;
+    background-color: var(--bg);
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* No mobile, o header do feed deve ficar logo abaixo do mobile-header (50px) */
+/* REMOVIDO: O media query para .feed-header foi movido para o bloco de 768px */
+
+.feed-nav {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--gray);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.2s;
+    font-size: 14px;
+}
+
+.nav-item:hover {
+    color: var(--text);
+}
+
+.nav-item.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 2px;
+}
+
+
+/* Área de Criação de Post */
+.create-post {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0 20px;
+}
+
+.create-post > p { /* Mensagem de sucesso */
+    color: var(--primary-dark);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.post-input-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-input-area input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: var(--bg);
+}
+
+.post-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.post-options i {
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.post-btn {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.post-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Cards de Postagem */
+.post-card {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.post-header .user-details {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.post-header .user-details strong {
+    font-size: 15px;
+}
+
+.post-header .user-details p {
+    color: var(--gray);
+    font-size: 13px;
+}
+
+.menu-icon {
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.post-body {
+    margin-bottom: 15px;
+}
+
+.post-body p {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.post-actions a {
+    text-decoration: none;
+    color: var(--gray);
+}
+
+.likes-shares i {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.likes-shares .liked {
+    color: red;
+}
+
+
+.post-comment {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.comment-content {
+    background-color: var(--bg);
+    padding: 8px 12px;
+    border-radius: 18px;
+    font-size: 13px;
+}
+
+.comment-content strong {
+    margin-right: 5px;
+}
+
+.add-comment {
+    display: flex;
+    align-items: center;
+}
+
+.add-comment input {
+    flex-grow: 1;
+    width: 100%;
+    border: 1px solid var(--border);
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-top: 5px;
+    background-color: var(--bg);
+}
+
+/* 4. Sidebar Direita */
+.right-sidebar-goony {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+    padding: 0;
+}
+
+.item-card-right {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+
+.search-marathon {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 16px 0;
+}
+
+.search-marathon h4 {
+    margin-bottom: 15px;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.search-marathon input {
+    width: 100%;
+    padding: 8px 15px 8px 35px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background-color: var(--white);
+    font-size: 14px;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: var(--gray);
+    font-size: 14px;
+    pointer-events: none;
+}
+
+
+.follow-suggestions h4, .marathon-moments h4 {
+    margin-bottom: 15px;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.suggestion-item .user-details {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.suggestion-item .user-details strong {
+    display: block;
+    font-size: 14px;
+}
+
+.suggestion-item .user-details p {
+    font-size: 12px;
+    color: var(--gray);
+    margin: 0;
+}
+
+.follow-btn {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.follow-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.ver-mais {
+    display: block;
+    text-align: right;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.marathon-moments p {
+    font-size: 13px;
+    color: var(--gray);
+}
+
+/* ---------------------------------------------------------
+    MEDIA QUERY (RESPONSIVIDADE)
+    --------------------------------------------------------- */
+
+/* NOVO BREAKPOINT: Tablet/Telas Médias (Max 1024px) */
+@media (max-width: 1024px) {
+    .dashboard-container {
+        /* Reduz o tamanho das sidebars para caber melhor */
+        grid-template-columns: 200px 1fr 250px; 
+        gap: 15px;
+        padding: 15px;
+    }
+    .dashboard-sidebar, .sidebar-frame {
+        /* Sidebar esquerda menor */
+        width: 200px;
+    }
+    .right-sidebar-goony {
+        /* Sidebar direita menor */
+        width: 250px;
+    }
+    .nav-menu li {
+        padding: 10px 15px; /* Reduz o padding da navegação */
+    }
+    .create-event-btn {
+        width: 90%; /* Ajusta o botão */
+    }
+}
+
+
+/* BREAKPOINT MOBILE (Max 768px) */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 55px; 
+        background: var(--bg);
+    }
+
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        padding: 0;
+        gap: 0;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    /* Oculta as sidebars no mobile */
+    .dashboard-sidebar, 
+    .sidebar-frame, 
+    .right-sidebar-goony {
+        display: none !important;
+    }
+
+    /* 5. CABEÇALHO MOBILE (Top Bar) */
+    .mobile-header {
+        display: flex;
+    }
+    .mobile-header .icon-btn {
+        font-size: 20px;
+        color: var(--primary);
+        cursor: pointer;
+    }
+    .mobile-header .logo-text {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--primary);
+    }
+    
+    /* Conteúdo Principal (Feed) */
+    .dashboard-feed {
+        padding: 0;
+        width: 100%;
+        /* Adiciona padding lateral para mobile para posts */
+        padding-left: 0; 
+        padding-right: 0;
+        padding-top: 50px; /* Adicionado para que o feed comece abaixo do mobile-header */
+    }
+
+    /* Cabeçalho do Feed (Abas) */
+    .feed-header {
+        position: sticky;
+        top: 50px; /* CORRIGIDO: Coloca o header do feed abaixo do mobile-header (50px) */
+        z-index: 15; /* CORRIGIDO: Garante que fique acima dos posts */
+        padding: 15px 15px 10px;
+        background-color: var(--white);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Adicionado sombra sutil */
+    }
+    .feed-nav {
+        overflow-x: auto;
+        padding-bottom: 5px;
+        flex-wrap: nowrap;
+        scrollbar-width: none; 
+    }
+    .feed-nav::-webkit-scrollbar {
+        display: none; 
+    }
+    .nav-item {
+        flex-shrink: 0;
+        font-size: 13px;
+        padding: 5px 0;
+    }
+    .nav-item.active::after {
+        bottom: -5px;
+    }
+
+    /* Área de Criação de Post (MOBILE) */
+    .create-post {
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid var(--border);
+        background: var(--white);
+        padding: 15px;
+    }
+    .create-post > p {
+        display: none;
+    }
+    .post-input-area {
+        /* Simplificado: Avatar e Input na mesma linha, Options abaixo */
+        flex-wrap: nowrap;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    .post-input-area input {
+        order: 1;
+        width: 100%; 
+        margin: 0;
+    }
+    .post-input-area .avatar-sm {
+        order: 0;
+        flex-shrink: 0; /* Garante que o avatar não diminua */
+    }
+    .post-options {
+        order: 2;
+        width: 100%;
+        justify-content: space-between; /* Melhor espaçamento */
+        padding: 0;
+        margin-top: 0;
+        /* Adicionado separador superior discreto para opções */
+        border-top: 1px solid var(--border);
+        padding-top: 10px;
+    }
+    .post-options i {
+        /* Aumenta o tamanho dos ícones para toque */
+        font-size: 18px; 
+    }
+    .post-btn {
+        /* O botão "Postar" deve permanecer se houver espaço e para reforçar a ação */
+        display: inline-block; 
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    /* Cards de Postagem */
+    .post-card {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        box-shadow: none;
+        margin: 0;
+        /* Separador visual forte */
+        border-bottom: 8px solid var(--bg); 
+        padding: 15px;
+    }
+    .post-card:last-of-type {
+        border-bottom: none;
+    }
+    .post-image-placeholder {
+        height: 250px;
+    }
+    .post-actions {
+        /* Mantido o layout original, mas com melhor alinhamento */
+        flex-direction: row; 
+        justify-content: space-between;
+        gap: 0;
+    }
+    .likes-shares {
+        order: 1; /* Retorna a ordem padrão para maior clareza */
+    }
+    .post-actions a {
+        order: 2; /* "Ver comentários" à direita */
+    }
+    .post-comment {
+        border-top: none;
+        margin-top: 10px;
+        padding-top: 0;
+    }
+    .add-comment input {
+        margin-top: 0;
+    }
+    .post-actions a i {
+        margin-right: 5px;
+    }
+    .add-comment {
+        margin-top: 10px;
+    }
+}
+
+
+/* 6. FOOTER/NAVBAR INFERIOR (Mobile) */
+.mobile-navbar-footer {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    background-color: var(--white);
+    border-top: 1px solid var(--border);
+    z-index: 30;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .mobile-navbar-footer {
+        display: flex;
+    }
+    .nav-item-mobile {
+        color: var(--gray);
+        font-size: 22px;
+        padding: 5px;
+        position: relative;
+    }
+    .nav-item-mobile.active {
+        color: var(--primary);
+    }
+    .nav-item-mobile.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0px; 
+        left: 50%;
+        transform: translateX(-50%);
+        width: 25px;
+        height: 3px;
+        background-color: var(--primary);
+        border-radius: 2px;
+    }
+    /* Ajustei o alinhamento do indicador 'after' para o avatar */
+    .nav-item-mobile.avatar-mobile.active::after {
+        bottom: -5px; 
+    }
+    .nav-item-mobile.plus i {
+        font-size: 28px;
+    }
+    .nav-item-mobile.avatar-mobile {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-size: 0; 
+        line-height: 0;
+        padding: 0;
+    }
+    .nav-item-mobile.avatar-mobile .avatar-xs {
+        margin: 0;
+        width: 30px;
+        height: 30px;
+    }
 }
