@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Cadastro</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="field">
+      <label>Nome</label>
+      <input type="text" name="name" value="{{ form.data.name|default_if_none:'' }}">
+    </div>
+    <div class="field">
+      <label>Telefone</label>
+      <input type="text" name="phone" value="{{ form.data.phone|default_if_none:'' }}">
+    </div>
+    <div class="field">
+      <label>E-mail</label>
+      <input type="email" name="email" value="{{ form.data.email|default_if_none:'' }}">
+    </div>
+    <div class="field">
+      <label>Senha</label>
+      <input type="password" name="password1">
+    </div>
+    <div class="field">
+      <label>Confirmar Senha</label>
+      <input type="password" name="password2">
+    </div>
+    <button class="btn" type="submit">Cadastrar</button>
+  </form>
+  <p>Já tem conta? <a href="{% url 'accounts:login' %}">Entrar</a></p>
+{% endblock %}
