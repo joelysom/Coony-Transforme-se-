@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out; 
+}
+
+/* CABEÇALHO */
+
+body {
+    font-family: var(--font-text);
+    background-color: var(--color-background-snow);
+    color: var(--color-text-main);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+div {
+    width: 100%;
+    max-width: 600px; 
+    background-color: var(--color-background-card);
+    box-shadow: var(--shadow-light);
+    padding: 0; 
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px var(--spacing-grande) 15px; 
+    border-bottom: 1px solid var(--color-input-border);
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: var(--font-text); 
+    font-size: 1.25rem; 
+    font-weight: 700;
+    color: var(--color-text-main);
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0 10px;
+}
+
+header a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--color-text-main);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+header a:last-child {
+    color: var(--color-primary); 
+}
+
+/* FORMULÁRIO */
+
+form {
+    padding: 0 var(--spacing-grande); 
+}
+
+label {
+    display: block;
+    font-family: var(--font-text);
+    font-size: 1rem;
+    color: var(--color-text-main);
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: 400; 
+}
+
+input:not([type="file"]):not([type="checkbox"]) {
+    width: 100%;
+    height: var(--height-input); 
+    padding: 12px 14px;
+    border: 1px solid var(--color-input-border); 
+    border-radius: var(--radius-input); 
+    background-color: var(--color-background-card); 
+    color: var(--color-text-main);
+    font-size: 1rem;
+    font-family: var(--font-text);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(236, 132, 65, 0.25); 
+}
+
+::placeholder {
+    color: #999999; 
+}
