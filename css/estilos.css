@@ -294,7 +294,7 @@ form .linkTxt{
 }
 
 .linkTxt p a{
-    color: blue;
+    color: #33A7D8;
     text-decoration: none;
     font-weight: 600;
 }
@@ -436,7 +436,7 @@ form .linkTxt{
     color: var(--black);
 }
 .wrapper .form-box.register .register-always-link a{
-    color: blue;
+    color: #33A7D8;
     text-decoration: none;
     font-weight: 600;
 }
@@ -654,7 +654,7 @@ form .linkTxt{
 }
 
 .ui-link a {
-    color: blue;
+    color: #33A7D8;
     text-decoration: none;
     font-weight: 600;
 }
