@@ -1,38 +1,42 @@
 *{
-    margin: 0;
-    padding: 0;
-    background-color: #FFFAFA;
+  margin: 0;
+  padding: 0;
+  background-color: #FFFAFA;
 }
 
 .reset-header h1 {
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 24px;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.reset-header p {
-    text-align: center;
-    color: #333;
+.reset-header h3 {
+  text-align: center;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 60px;
 }
 
 .info-text {
-    text-align: center;
-    color: #000000;
-    opacity: 0.7;
-    font-family: 'Inter', sans-serif;
-
+  text-align: center;
+  color: #000000;
+  opacity: 0.7;
+  font-family: 'Inter', sans-serif;
+  margin-top: 10px;
+  font-size: 14px;
 }
 
 .code-container {
   display: flex;
-  gap: 10px;
+  gap: 40px;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 .code {
-  width: 50px;
+  width: 60px;
   height: 60px;
   text-align: center;
   font-size: 24px;
@@ -48,6 +52,103 @@
 }
 
 .reset-actions p{
-    text-align: center;
-    
+  margin-top: 60px;
+  text-align: center;
+  color: #000000;
+  opacity: 0.6;
+  font-family: 'Inter', sans-serif;
+}
+
+.resend-link {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: black;
+  font-family: 'Inter', sans-serif;
+  padding-top: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.bar p{
+  color: black;
+  font-family: 'Inter', sans-serif;
+  margin-left: 600px;
+  margin-top: 40px;
+  position: relative;
+}
+
+.linha-laranja {
+  width: 200px;
+  height: 8px;
+  background-color: #ED6C4B;
+  border: none;
+  border-radius: 4px;
+  margin-left: 300px;
+  margin-top: 10px;
+  position:absolute ;
+  z-index: 10;
+}
+
+.linha-cinza {
+  width: 200px;
+  height: 8px;
+  background-color: #D3D3D3;
+  border: none;
+  border-radius: 4px;
+  margin-left: 495px;
+  margin-top: -8px;
+  position: absolute;
+  z-index: 5;
+}
+
+
+
+
+
+
+/*ALTERNATIVA 2*/
+
+/* ... (Seu CSS anterior) ... */
+
+/* Novo contêiner para as barras de progresso */
+.status-bar-container {
+    display: flex;
+    justify-content: center; /* Centraliza as barras horizontalmente */
+    margin-top: 40px;
+    position: relative; /* CRUCIAL: Este é o novo contexto de posicionamento */
+    height: 8px; /* Altura igual à das barras para evitar que outros elementos se sobreponham */
+}
+
+.linha-laranja {
+  width: 200px; /* Largura total da barra de progresso (ex: 50% concluído) */
+  height: 8px;
+  background-color: #ED6C4B;
+  border: none;
+  border-radius: 4px;
+  /* Resetamos as margens para 0, pois o contêiner gerencia o posicionamento */
+  margin-left: 0; 
+  margin-top: 0;
+  position: absolute; /* Agora se posiciona em relação ao .status-bar-container */
+  z-index: 10;        /* Fica na frente */
+  left: 0;            /* Alinha à esquerda do contêiner */
+}
+
+.linha-cinza {
+  width: 400px; /* Largura total da barra cheia (ex: o total do progresso) */
+  height: 8px;
+  background-color: #D3D3D3;
+  border: none;
+  border-radius: 4px;
+  /* Resetamos as margens para 0 */
+  margin-left: 0;
+  margin-top: 0;
+  position: absolute; /* Agora se posiciona em relação ao .status-bar-container */
+  z-index: 5;         /* Fica atrás da laranja */
+  left: 0;            /* Alinha à esquerda do contêiner */
+}
+
+/* Remova ou ajuste esta regra, pois o novo contêiner resolve o alinhamento */
+.bar p{
+   /* ... (seu estilo antigo para p, se ainda precisar dele para outro texto) */
 }
