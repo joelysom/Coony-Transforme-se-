@@ -2,6 +2,10 @@
  *  ALERTA: CSS ilustrativo — será ajustado depois no padrão do app.
  */
 
+ .fontes a serem usadas{
+  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
+ }
 
 /* ================================
    **LAYOUT PRINCIPAL**
@@ -26,7 +30,7 @@ body {
    **MENU LATERAL**
 ================================ */
 .sidebar {
-  width: 250px;
+  width: 300px;
   background-color: #fffafa;
   border-right: 1px solid #e0ddd9;
   display: flex;
@@ -126,9 +130,10 @@ body {
 }
 
 .message {
+  max-width: inherit;
   display: flex;
   align-items: flex-end;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -188,11 +193,11 @@ body {
 }
 
 .message.sent .time {
-  right: 65px;
+  right: 80px;
 }
 
 .message.received .time {
-  left: 65px;
+  left: 80px;
 }
 
 
@@ -252,21 +257,175 @@ body {
 /* ================================
    **RESPONSIVIDADE**
 ================================ */
+
+@media (max-width: 900px){
+
+  body{padding: 0;}
+}
+
+/* 📌 Celulares até 768px */
 @media (max-width: 768px) {
+
+  /* Sidebar vira menu oculto */
   .sidebar {
-    display: none;
+    position: fixed;
+    left: -260px;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    background-color: #fffafa;
+    z-index: 999;
+    padding: 20px 10px;
+    transition: 0.3s ease;
+    border-right: 1px solid #ddd;
   }
 
+  /* Classe ativada via JS (se quiser implementar depois) */
+  .sidebar.active {
+    left: 0;
+  }
+
+  /* O chat ocupa a tela toda */
   .chat-app {
     width: 100%;
     height: 100vh;
   }
 
+  /* Header mais compacto */
+  .chat-header {
+    padding: 8px 12px;
+  }
+
+  .user img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .user-info h3 {
+    font-size: 14px;
+  }
+
+  .user-info p {
+    font-size: 11px;
+  }
+
+  .header-icons .icon img {
+    width: 26px;
+  }
+
+  /* Área de mensagens */
+  .chat-body {
+    padding: 0 6px;
+  }
+
+  #rolagem {
+    padding: 10px 0;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+  }
+
+  .message .bubble {
+    font-size: 13px;
+    max-width: 85%;
+    padding: 10px 13px;
+  }
+
+  .message img.avatar {
+    width: 28px;
+    height: 28px;
+    margin: 10px;
+  }
+
+  .time {
+    font-size: 9px;
+  }
+
+
+  /* Rodapé otimizado */
+  .chat-footer {
+    padding: 8px;
+    gap: 5px;
+  }
+
   .chat-footer input {
-    background: #fff;
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .chat-footer button {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+
+  .chat-footer button img {
+    width: 28px;
+    height: 24px;
+  }
+
+  /* Botões com área maior no mobile */
+  .emoji-btn,
+  #imgBtn,
+  #audioBtn,
+  #sendBtn {
+    padding: 6px;
+  }
+
+  /* Timer mais alinhado */
+  #recordTimer {
+    font-size: 12px;
+  }
+
+  /* Emojis melhor posicionados */
+  emoji-picker {
+    left: 10px;
+    bottom: 80px;
+    width: 90%;
+    max-width: 320px;
+  }
+
+  /* Imagens da mensagem */
+  .image-bubble img.sent-image {
+    max-width: 140px;
+    max-height: 140px;
   }
 }
 
+
+
+/* ================================
+   **RESPONSIVIDADE EXTRA (≤ 480px)
+================================ */
+
+@media (max-width: 480px) {
+
+  .chat-header {
+    padding: 6px 10px;
+  }
+
+  .user-info h3 {
+    font-size: 13px;
+  }
+
+  .message .bubble {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .chat-footer {
+    gap: 3px;
+  }
+
+  .chat-footer button {
+    width: 30px;
+    height: 30px;
+  }
+
+  emoji-picker {
+    bottom: 85px;
+    left: 5px;
+  }
+}
 
 
 /* ================================
