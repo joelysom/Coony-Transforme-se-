@@ -28,13 +28,12 @@
     <!-- ============================
          MENU LATERAL
     ============================= -->
-    <aside class="sidebar">
+    <aside class="sidebar contatos">
       <nav>
         <div class="app-container">
           <div class="top-bar">
             <h1 class="top-bar__title"><button class="botao ">Conversas</button> / <button class="botao">Comunidades</button></h1>
           </div>
-
           <div class="search-wrapper">
             <input type="text" id="busca" class="search-input" placeholder="Buscar contato..." />
           </div>
@@ -49,7 +48,7 @@
     <!-- ============================
          ÁREA PRINCIPAL DO CHAT
     ============================= -->
-    <div class="chat-app">
+    <div class="chat-app chat">
 
       <!-- ============================
            CABEÇALHO DO CHAT
@@ -68,7 +67,7 @@
         <!-- Ícones do cabeçalho -->
         <div class="header-icons">
           <button class="icon"><img src='../../img/imgChat/telefone.png'/></button>
-          <button class="icon"><img src='../../img/imgChat/setaEsquerda.png'/></button>
+          <button class="icon voltarBtn"><img src='../../img/imgChat/setaEsquerda.png'/></button>
         </div>
 
       </header>
@@ -90,7 +89,7 @@
 
             <!-- Avatar do usuário -->
             <img src="../../img/imgChat/persona2.jpg" alt="Eu" class="avatar">
-            <span class="time">20:21</span>
+            <span class="time">20:21<span class="confirmacaoMsg">✓✓</span></span>
           </div>
 
           <!-- Exemplo de mensagem recebida -->
@@ -139,7 +138,7 @@
         <input type="text" id="msgInput" placeholder="Digite uma mensagem...">
 
         <!-- Botão de enviar -->
-        <button id="sendBtn">➤</button>
+        <button id="sendBtn" class="botaoDesativo">➤</button>
 
       </footer>
 
