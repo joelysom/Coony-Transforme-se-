@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tela Empresas/Profissionais</title>
-  <link rel="stylesheet" href="/css/empresa.css">
-  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/proficionais.css" />
+  
 </head>
 <body>
   <div class="page">
@@ -13,9 +13,8 @@
     <main class="container">
       <section class="card" role="region" aria-label="Dados Específicos para Profissionais">
         <div class="card-header">
-          <button class="icon-btn" aria-label="Voltar">←</button>
+         <button class="icon-btn" aria-label="Voltar">←</button>
           <h2>Dados Específicos para Profissionais</h2>
-          <button class="icon-btn" aria-label="Ajuda">?</button>
         </div>
 
         <form class="form" autocomplete="off">
@@ -57,7 +56,7 @@
           <label class="field">
             <span class="label-text">Foto de perfil:</span>
             <div class="file-row">
-              <!-- input[type=file] oculto visualmente, acionado pelo botão estilizado -->
+      
               <input class="file-input" type="file" id="avatar" name="avatar" accept="image/*" data-trigger="#btn-upload" />
               <button type="button" id="btn-upload" class="upload-btn">Upload de Arquivos</button>
               <img src="placeholder-avatar.png" alt="Pré-visualização" class="preview-avatar" />
@@ -65,7 +64,7 @@
           </label>
 
           <div class="actions">
-            <!-- botão usa as classes do seu CSS: .btn .btn-primary -->
+          
             <button class="btn btn-primary" type="submit">Finalizar →</button>
           </div>
         </form>
@@ -102,7 +101,7 @@
     </footer>
   </div>
 
-  <!-- Pequeno script para ligar o botão estilizado ao input file (não altera estrutura do HTML) -->
+ 
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       const fileInput = document.querySelector('.file-input');
