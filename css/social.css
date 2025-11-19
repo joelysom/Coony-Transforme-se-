@@ -1,768 +1,602 @@
-/* =========================================================
-    ESTILOS BASE E VARIÁVEIS (ATUALIZADO PARA #EC8441)
-    ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 :root {
-    --bg: #f2f4f7;
-    --white: #fff;
-    --primary: #EC8441; /* COR PRIMÁRIA: LARANJA */
-    --text: #1d1d1d;
-    --gray: #666;
-    --border: #ddd;
-    --primary-dark: #cc6c2d; /* Versão mais escura para hover */
+  --orange: #f68b4a;
+  --orange-dark: #d47022;
+  --beige: #f5efe7;
+  --white: #ffffff;
+  --gray-light: #f7f5f3;
+  --gray-medium: #cec4b6;
+  --gray-dark: #5c5b61;
+  --border-radius: 12px;
+  --font-family: 'Poppins', sans-serif;
+  --box-shadow: 0 2px 6px rgb(246 139 74 / 0.15);
 }
 
-/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.5;
+  margin: 0;
+  background-color: var(--beige);
+  font-family: var(--font-family);
+  color: #4a4a4a;
+  min-height: 100vh;
+  
+  /* --- RESPONSIVIDADE: Layout Principal com CSS Grid --- */
+  display: grid;
+  /* Define as 3 colunas: Sidebar Esquerda (220px), Feed (1fr), Sidebar Direita (300px) */
+  grid-template-columns: 220px 1fr 300px; 
+  grid-template-rows: 1fr;
+  overflow-x: hidden; /* Previne a barra de rolagem horizontal */
 }
 
-/* 1. LAYOUT PRINCIPAL (3 COLUNAS - DESKTOP) */
-.dashboard-container {
-    display: grid;
-    /* Ajustado para usar 'minmax' na coluna central para melhor adaptação */
-    grid-template-columns: 250px 1fr 300px; 
-    gap: 20px;
+/* Lateral Menu (Sidebar Esquerda) */
+.sidebar {
+  grid-column: 1 / 2;
+  background: var(--white);
+  width: 100%; /* Ocupa a largura total da coluna de 220px */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--gray-light);
+  height: 100vh; 
+  position: sticky; /* Mantém o menu fixo */
+  top: 0;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 30px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+  white-space: nowrap;
+}
+
+.menu li {
+  margin-bottom: 15px;
+}
+
+.menu button {
+  width: 100%;
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--gray-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu button svg {
+  flex-shrink: 0;
+  stroke: var(--gray-dark);
+  stroke-width: 1.5;
+  width: 24px;
+  height: 24px;
+}
+
+.menu button:hover {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.menu button:hover svg {
+  stroke: var(--white);
+}
+
+.menu .active {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.menu .active svg {
+  stroke: var(--white);
+}
+
+.button-create-event {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  background-color: var(--orange);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.button-create-event:hover {
+  background-color: var(--orange-dark);
+}
+
+.user-area {
+  background: var(--gray-light);
+  border-radius: var(--border-radius);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: default;
+}
+
+.user-area img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  flex-grow: 1;
+  font-size: 14px;
+  color: var(--gray-dark);
+}
+
+.user-info strong {
+  display: block;
+  font-weight: 600;
+}
+
+/* Botão de sair com ícone */
+.logout-button-with-icon {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  width: 100%; 
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--gray-dark);
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.logout-button-with-icon:hover {
+    background: #e0e0e0;
+}
+
+.logout-button-with-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+/* ÁREA DO FEED (Main Content) */
+.main-feed {
+    grid-column: 2 / 3;
     padding: 20px;
-    max-width: 1200px;
-    margin: auto;
+    overflow-y: auto; /* Permite rolagem apenas no feed */
 }
 
-/* NOVO: Estilo para o IFRAME da Sidebar */
-.sidebar-frame {
+/* Centraliza e limita a largura do conteúdo do feed */
+.main-feed > * {
+    max-width: 650px; 
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.feed-tabs {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid var(--gray-medium);
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+
+.feed-tabs .tab {
+    background: none;
     border: none;
-    width: 100%;
-    height: 100%;
-    position: sticky; 
-    top: 20px;
-    align-self: start;
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--gray-dark);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: border-bottom-color 0.3s, color 0.3s;
 }
 
-/* ---------------------------------------------------------
-    COMPONENTES GERAIS (NÃO ALTERADO)
-    --------------------------------------------------------- */
-/* ... (Avatares, placeholders e estilos gerais mantidos) ... */
+.feed-tabs .tab.active {
+    color: var(--orange);
+    border-bottom-color: var(--orange);
+}
 
-.avatar-placeholder {
-    background-color: #e1e9ee;
-    border: 1px solid var(--border);
+/* Share Box */
+.share-box {
+    background: var(--white);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
 }
-.avatar-sm {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-.avatar-xs {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 8px;
-}
-.post-image-placeholder {
+
+.share-textarea {
     width: 100%;
-    height: 200px;
-    background-color: #e1e9ee;
-    border-radius: 6px;
+    border: 1px solid var(--gray-light);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    resize: none;
+    font-family: var(--font-family);
+    font-size: 15px;
+}
+
+.share-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
 }
-.post-image {
-    width: 100%;
-    height: auto;
-    max-height: 400px; 
-    object-fit: cover;
-    border-radius: 6px;
-}
 
-
-/* 2. SIDEBAR ESQUERDA (DESKTOP) */
-.dashboard-sidebar {
-    background: var(--white);
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    overflow: hidden;
-    padding: 20px 0;
-    position: sticky; 
-    top: 20px;
-    height: fit-content;
-}
-
-.logo-goony {
-    text-align: center;
-    margin-bottom: 20px;      
-}
-
-.nav-menu ul {
-    list-style: none; 
-}
-
-.nav-menu li {
-    display: flex;
-    align-items: center;
-    padding: 12px 20px;
-    margin-bottom: 5px;
+.share-icons button {
+    background: none;
+    border: none;
     cursor: pointer;
-    color: var(--text);
-    transition: background-color 0.2s, color 0.2s;
-}
-
-.nav-menu li i {
+    padding: 5px;
     margin-right: 10px;
-    width: 20px;
 }
 
-.nav-menu li:hover {
-    background-color: rgba(236, 132, 65, 0.1); 
-    color: var(--primary);
+.share-icons img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
 }
 
-.nav-menu li.active {
-    background-color: var(--primary);
-    color: var(--white);
-    font-weight: 600;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    margin-left: 0;
-}
-
-/* Botão "Criar Evento" */
-.create-event-btn {
-    background-color: var(--primary);
+.share-button {
+    background-color: var(--orange);
     color: var(--white);
     border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    width: 80%;
-    margin: 20px auto;
-    display: block;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background-color 0.2s;
-}
-
-.create-event-btn:hover {
-    background-color: var(--primary-dark);
-}
-
-/* Informações do Usuário no Rodapé da Sidebar */
-.user-info-bottom {
-    display: flex;
-    align-items: center;
-    padding: 20px 20px;
-    margin-top: 50px;
-    border-top: 1px solid var(--border);
-}
-
-.user-info-bottom .user-details {
-    margin-left: 10px;
-}
-
-.user-info-bottom .user-details p {
-    font-weight: 600;
-    margin-bottom: 0;
-}
-
-.user-info-bottom .user-details a {
-    color: var(--gray);
-    font-size: 13px;
-    text-decoration: none;
-}
-
-
-/* 3. CONTEÚDO PRINCIPAL (FEED) */
-.dashboard-feed {
-    padding-top: 0;
-}
-
-/* Cabeçalho do Feed (Abas) */
-.feed-header {
-    position: sticky;
-    top: 0;
-    background-color: var(--bg);
-    z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-}
-
-/* No mobile, o header do feed deve ficar logo abaixo do mobile-header (50px) */
-/* REMOVIDO: O media query para .feed-header foi movido para o bloco de 768px */
-
-.feed-nav {
-    display: flex;
-    gap: 25px;
-}
-
-.nav-item {
-    text-decoration: none;
-    color: var(--gray);
-    font-weight: 500;
-    padding: 5px 0;
-    position: relative;
-    transition: color 0.2s;
-    font-size: 14px;
-}
-
-.nav-item:hover {
-    color: var(--text);
-}
-
-.nav-item.active {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.nav-item.active::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: var(--primary);
-    border-radius: 2px;
-}
-
-
-/* Área de Criação de Post */
-.create-post {
-    background-color: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0 20px;
-}
-
-.create-post > p { /* Mensagem de sucesso */
-    color: var(--primary-dark);
-    font-size: 14px;
-    margin-bottom: 15px;
-}
-
-.post-input-area {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.post-input-area input {
-    flex-grow: 1;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    background-color: var(--bg);
-}
-
-.post-options {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.post-options i {
-    color: var(--gray);
-    cursor: pointer;
-}
-
-.post-btn {
-    background-color: var(--primary);
-    color: var(--white);
-    border: none;
+    border-radius: 8px;
     padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
     font-weight: 600;
-    transition: background-color 0.2s;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.post-btn:hover {
-    background-color: var(--primary-dark);
+.share-button:hover:not(:disabled) {
+    background-color: var(--orange-dark);
 }
 
-/* Cards de Postagem */
-.post-card {
-    background-color: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+.share-button:disabled {
+    background-color: var(--gray-medium);
+    cursor: not-allowed;
+}
+
+.post-success {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Post Styling */
+.post {
+    background: var(--white);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 25px;
 }
 
 .post-header {
     display: flex;
     align-items: center;
+    gap: 10px;
     margin-bottom: 15px;
 }
 
-.post-header .user-details {
-    flex-grow: 1;
-    margin-left: 10px;
+.post-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.post-header .user-details strong {
-    font-size: 15px;
+.post-header div strong {
+    font-weight: 600;
 }
 
-.post-header .user-details p {
-    color: var(--gray);
-    font-size: 13px;
+.post-header time {
+    display: block;
+    font-size: 12px;
+    color: var(--gray-dark);
 }
 
-.menu-icon {
-    color: var(--gray);
+.post-content {
+    margin: 0 0 15px 0;
+}
+
+.post-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+}
+
+.post-footer {
+    display: flex;
+    gap: 25px;
+    padding-top: 10px;
+    border-top: 1px solid var(--gray-light);
+    margin-bottom: 15px;
+}
+
+.post-footer button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     cursor: pointer;
+    color: var(--gray-dark);
+    font-weight: 600;
+    font-size: 14px;
 }
 
-.post-body {
+.post-footer img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Comments */
+.comment-section {
+    padding-top: 10px;
+}
+
+.comment {
+    background: var(--gray-light);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.comment strong {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.comment-actions {
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--orange);
+}
+
+.comment-actions span {
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.comment-input-box {
+    display: flex;
+    gap: 10px;
+}
+
+.comment-input {
+    flex-grow: 1;
+    border: 1px solid var(--gray-medium);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: var(--font-family);
+}
+
+.comment-send {
+    background-color: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment-send:hover:not(:disabled) {
+    background-color: var(--orange-dark);
+}
+
+.comment-send:disabled {
+    background-color: var(--gray-medium);
+    cursor: not-allowed;
+}
+
+
+/* Sidebar Direita */
+.sidebar-right {
+    grid-column: 3 / 4;
+    background: var(--white);
+    padding: 20px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-left: 1px solid var(--gray-light);
+    overflow-y: auto; /* Permite rolagem na sidebar direita */
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: var(--gray-light);
+    border-radius: var(--border-radius);
+    padding: 8px 12px;
+    margin-bottom: 25px;
+}
+
+.search-box input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    padding: 5px;
+    font-family: var(--font-family);
+    font-size: 14px;
+}
+
+.search-box input:focus {
+    outline: none;
+}
+
+.search-box svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+    color: var(--gray-dark);
+    flex-shrink: 0;
+}
+
+.whom-to-follow {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gray-dark);
+    margin-top: 0;
     margin-bottom: 15px;
 }
 
-.post-body p {
-    margin-bottom: 10px;
-    font-size: 15px;
-}
-
-.post-actions {
+.follow-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #eee;
-    padding-top: 10px;
-    margin-top: 10px;
-    font-size: 14px;
+    margin-bottom: 15px;
 }
 
-.post-actions a {
-    text-decoration: none;
-    color: var(--gray);
-}
-
-.likes-shares i {
-    margin-right: 5px;
-    cursor: pointer;
-}
-
-.likes-shares .liked {
-    color: red;
-}
-
-
-.post-comment {
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
-}
-
-.comment-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
-}
-
-.comment-content {
-    background-color: var(--bg);
-    padding: 8px 12px;
-    border-radius: 18px;
-    font-size: 13px;
-}
-
-.comment-content strong {
-    margin-right: 5px;
-}
-
-.add-comment {
+.follow-info {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
-.add-comment input {
-    flex-grow: 1;
-    width: 100%;
-    border: 1px solid var(--border);
-    padding: 8px 15px;
-    border-radius: 20px;
-    margin-top: 5px;
-    background-color: var(--bg);
+.follow-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-/* 4. Sidebar Direita */
-.right-sidebar-goony {
-    position: sticky;
-    top: 20px;
-    align-self: start;
-    padding: 0;
-}
-
-.item-card-right {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-    margin-bottom: 16px;
-}
-
-
-.search-marathon {
-    position: relative;
-    margin-bottom: 20px;
-    padding: 16px 0;
-}
-
-.search-marathon h4 {
-    margin-bottom: 15px;
-    color: var(--text);
-    font-size: 16px;
+.follow-names strong {
     font-weight: 600;
-}
-
-.search-marathon input {
-    width: 100%;
-    padding: 8px 15px 8px 35px;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    background-color: var(--white);
     font-size: 14px;
 }
 
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: var(--gray);
-    font-size: 14px;
-    pointer-events: none;
-}
-
-
-.follow-suggestions h4, .marathon-moments h4 {
-    margin-bottom: 15px;
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.suggestion-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.suggestion-item .user-details {
-    flex-grow: 1;
-    margin-left: 10px;
-}
-
-.suggestion-item .user-details strong {
+.follow-names span {
     display: block;
-    font-size: 14px;
-}
-
-.suggestion-item .user-details p {
     font-size: 12px;
-    color: var(--gray);
-    margin: 0;
+    color: var(--gray-dark);
 }
 
-.follow-btn {
-    background-color: var(--primary);
+.follow-button {
+    background-color: var(--orange);
     color: var(--white);
     border: none;
+    border-radius: 8px;
     padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.follow-btn:hover {
-    background-color: var(--primary-dark);
-}
-
-.ver-mais {
-    display: block;
-    text-align: right;
-    color: var(--primary);
-    text-decoration: none;
-    font-size: 14px;
-    margin-top: 5px;
-    font-weight: 500;
-}
-
-.marathon-moments p {
+    transition: background-color 0.3s;
     font-size: 13px;
-    color: var(--gray);
+    flex-shrink: 0;
 }
 
-/* ---------------------------------------------------------
-    MEDIA QUERY (RESPONSIVIDADE)
-    --------------------------------------------------------- */
+.follow-button:hover {
+    background-color: var(--orange-dark);
+}
 
-/* NOVO BREAKPOINT: Tablet/Telas Médias (Max 1024px) */
-@media (max-width: 1024px) {
-    .dashboard-container {
-        /* Reduz o tamanho das sidebars para caber melhor */
-        grid-template-columns: 200px 1fr 250px; 
-        gap: 15px;
-        padding: 15px;
-    }
-    .dashboard-sidebar, .sidebar-frame {
-        /* Sidebar esquerda menor */
-        width: 200px;
-    }
-    .right-sidebar-goony {
-        /* Sidebar direita menor */
-        width: 250px;
-    }
-    .nav-menu li {
-        padding: 10px 15px; /* Reduz o padding da navegação */
-    }
-    .create-event-btn {
-        width: 90%; /* Ajusta o botão */
-    }
+.see-more {
+    color: var(--orange);
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.trending-runs {
+    background: var(--gray-light);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-top: 30px;
+    font-weight: 600;
+    color: var(--gray-dark);
 }
 
 
-/* BREAKPOINT MOBILE (Max 768px) */
-@media (max-width: 768px) {
+/* =================================== */
+/* === MEDIA QUERIES (RESPONSIVIDADE)=== */
+/* =================================== */
+
+/* Dispositivos de Tela Média (Ex: Laptops e Tablets em paisagem - < 1200px) */
+@media (max-width: 1200px) {
     body {
-        padding-bottom: 55px; 
-        background: var(--bg);
+        /* Remove a terceira coluna (sidebar-right) */
+        grid-template-columns: 220px 1fr; 
     }
 
-    .dashboard-container {
-        grid-template-columns: 1fr;
-        padding: 0;
-        gap: 0;
-        max-width: 100%;
-        margin: 0;
-    }
-
-    /* Oculta as sidebars no mobile */
-    .dashboard-sidebar, 
-    .sidebar-frame, 
-    .right-sidebar-goony {
-        display: none !important;
-    }
-
-    /* 5. CABEÇALHO MOBILE (Top Bar) */
-    .mobile-header {
-        display: flex;
-    }
-    .mobile-header .icon-btn {
-        font-size: 20px;
-        color: var(--primary);
-        cursor: pointer;
-    }
-    .mobile-header .logo-text {
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--primary);
-    }
-    
-    /* Conteúdo Principal (Feed) */
-    .dashboard-feed {
-        padding: 0;
-        width: 100%;
-        /* Adiciona padding lateral para mobile para posts */
-        padding-left: 0; 
-        padding-right: 0;
-        padding-top: 50px; /* Adicionado para que o feed comece abaixo do mobile-header */
-    }
-
-    /* Cabeçalho do Feed (Abas) */
-    .feed-header {
-        position: sticky;
-        top: 50px; /* CORRIGIDO: Coloca o header do feed abaixo do mobile-header (50px) */
-        z-index: 15; /* CORRIGIDO: Garante que fique acima dos posts */
-        padding: 15px 15px 10px;
-        background-color: var(--white);
-        border-bottom: 1px solid var(--border);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Adicionado sombra sutil */
-    }
-    .feed-nav {
-        overflow-x: auto;
-        padding-bottom: 5px;
-        flex-wrap: nowrap;
-        scrollbar-width: none; 
-    }
-    .feed-nav::-webkit-scrollbar {
-        display: none; 
-    }
-    .nav-item {
-        flex-shrink: 0;
-        font-size: 13px;
-        padding: 5px 0;
-    }
-    .nav-item.active::after {
-        bottom: -5px;
-    }
-
-    /* Área de Criação de Post (MOBILE) */
-    .create-post {
-        margin: 0;
-        border: none;
-        border-radius: 0;
-        border-bottom: 1px solid var(--border);
-        background: var(--white);
-        padding: 15px;
-    }
-    .create-post > p {
+    .sidebar-right {
+        /* Oculta a sidebar da direita */
         display: none;
     }
-    .post-input-area {
-        /* Simplificado: Avatar e Input na mesma linha, Options abaixo */
-        flex-wrap: nowrap;
-        gap: 10px;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-    .post-input-area input {
-        order: 1;
-        width: 100%; 
-        margin: 0;
-    }
-    .post-input-area .avatar-sm {
-        order: 0;
-        flex-shrink: 0; /* Garante que o avatar não diminua */
-    }
-    .post-options {
-        order: 2;
-        width: 100%;
-        justify-content: space-between; /* Melhor espaçamento */
-        padding: 0;
-        margin-top: 0;
-        /* Adicionado separador superior discreto para opções */
-        border-top: 1px solid var(--border);
-        padding-top: 10px;
-    }
-    .post-options i {
-        /* Aumenta o tamanho dos ícones para toque */
-        font-size: 18px; 
-    }
-    .post-btn {
-        /* O botão "Postar" deve permanecer se houver espaço e para reforçar a ação */
-        display: inline-block; 
-        font-size: 14px;
-        padding: 6px 12px;
-    }
 
-    /* Cards de Postagem */
-    .post-card {
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        box-shadow: none;
-        margin: 0;
-        /* Separador visual forte */
-        border-bottom: 8px solid var(--bg); 
-        padding: 15px;
-    }
-    .post-card:last-of-type {
-        border-bottom: none;
-    }
-    .post-image-placeholder {
-        height: 250px;
-    }
-    .post-actions {
-        /* Mantido o layout original, mas com melhor alinhamento */
-        flex-direction: row; 
-        justify-content: space-between;
-        gap: 0;
-    }
-    .likes-shares {
-        order: 1; /* Retorna a ordem padrão para maior clareza */
-    }
-    .post-actions a {
-        order: 2; /* "Ver comentários" à direita */
-    }
-    .post-comment {
-        border-top: none;
-        margin-top: 10px;
-        padding-top: 0;
-    }
-    .add-comment input {
-        margin-top: 0;
-    }
-    .post-actions a i {
-        margin-right: 5px;
-    }
-    .add-comment {
-        margin-top: 10px;
+    /* O feed agora ocupa o restante do espaço */
+    .main-feed {
+        grid-column: 2 / 3;
     }
 }
 
-
-/* 6. FOOTER/NAVBAR INFERIOR (Mobile) */
-.mobile-navbar-footer {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 55px;
-    background-color: var(--white);
-    border-top: 1px solid var(--border);
-    z-index: 30;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0 10px;
-}
-
+/* Dispositivos Móveis (Ex: Tablets em retrato e Smartphones - < 768px) */
 @media (max-width: 768px) {
-    .mobile-navbar-footer {
-        display: flex;
+    body {
+        /* Apenas uma coluna para o feed, remove o sidebar lateral esquerdo */
+        grid-template-columns: 1fr; 
     }
-    .nav-item-mobile {
-        color: var(--gray);
-        font-size: 22px;
-        padding: 5px;
-        position: relative;
+
+    .sidebar {
+        /* Oculta o menu lateral esquerdo em dispositivos móveis */
+        display: none; 
     }
-    .nav-item-mobile.active {
-        color: var(--primary);
+
+    .main-feed {
+        grid-column: 1 / 2; /* O feed ocupa toda a largura */
+        padding: 10px; /* Reduz o padding em telas pequenas */
     }
-    .nav-item-mobile.active::after {
-        content: '';
-        position: absolute;
-        bottom: 0px; 
-        left: 50%;
-        transform: translateX(-50%);
-        width: 25px;
-        height: 3px;
-        background-color: var(--primary);
-        border-radius: 2px;
+    
+    /* Garante que elementos dentro do feed ocupem 100% da tela visível */
+    .main-feed > * {
+        max-width: 100%; 
     }
-    /* Ajustei o alinhamento do indicador 'after' para o avatar */
-    .nav-item-mobile.avatar-mobile.active::after {
-        bottom: -5px; 
+    
+    .feed-tabs {
+        overflow-x: auto; /* Permite rolagem horizontal nas abas (tabs) */
+        white-space: nowrap; /* Impede que as abas quebrem a linha */
+        padding-bottom: 10px;
     }
-    .nav-item-mobile.plus i {
-        font-size: 28px;
+    
+    .feed-tabs .tab {
+        flex-shrink: 0; /* Impede que as abas encolham */
     }
-    .nav-item-mobile.avatar-mobile {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        font-size: 0; 
-        line-height: 0;
-        padding: 0;
-    }
-    .nav-item-mobile.avatar-mobile .avatar-xs {
-        margin: 0;
-        width: 30px;
-        height: 30px;
+}
+
+/* Telas muito pequenas (opcional, para garantir que o menu da sidebar caiba se for reativado) */
+@media (max-width: 480px) {
+    .post-header, .user-area {
+        align-items: flex-start;
     }
 }

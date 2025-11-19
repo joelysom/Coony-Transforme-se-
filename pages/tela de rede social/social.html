@@ -1,157 +1,325 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goony - Dashboard Social</title>
-    <link rel="stylesheet" href="../../css/social.css"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coony - Feed</title>
+
+  <link rel="stylesheet" href="/Coony-Transforme-se-/css/social.css" />
+  <link rel="icon" type="image/svg+xml" href="/img/Logo.svg" />
 </head>
 <body>
-    
-    <div class="dashboard-container">
-        
-        <iframe src="/component/sidebar.html" class="sidebar-frame" frameborder="0"></iframe> 
+  <!-- MENU LATERAL ESQUERDO -->
 
-        <main class="dashboard-feed"> 
-            
-            <div class="feed-header">
-                <div class="search-marathon" style="display: none;">
-                    <input type="text" placeholder="Buscar postagens ou usuários...">
-                    <i class="fas fa-search search-icon"></i>
-                </div>
-                <nav class="feed-nav">
-                    <a href="#" class="nav-item active">Feed</a>
-                    <a href="#" class="nav-item">Seguindo</a>
-                    <a href="#" class="nav-item">Eventos P/ Mim</a>
-                    <a href="#" class="nav-item">Novidades</a>
-                    <a href="#" class="nav-item">Em Alta</a>
-                </nav>
-            </div>
+  <aside class="sidebar" aria-label="Menu principal">
+    <img src="/Coony-Transforme-se-/img/Logo.svg" alt="Coony logo" class="logo" />
 
-            <div class="create-post">
-                <p><i class="fas fa-check-circle"></i> Post criado com sucesso!</p>
-                <div class="post-input-area">
-                    <img src="https://i.pinimg.com/1200x/cf/f0/85/cff0856affba5e16e9ce20f4414621e8.jpg" alt="Seu avatar" class="avatar-sm">
-                    <input type="text" placeholder="Compartilhe a sua conquista...">
-                    <div class="post-options">
-                        <i class="fas fa-camera"></i>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <button class="post-btn">Postar</button>
-                    </div>
-                </div>
-            </div>
+    <ul class="menu" role="menu">
+      <li role="none">
+        <button role="menuitem" class="active" aria-current="page">
+          <svg class="icon-home" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M3 12l9-9 9 9M9 21V12h6v9"/></svg>
+          Início
+        </button>
+      </li>
+      <li role="none">
+        <button role="menuitem">
+          <svg class="icon-calendar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Ver Eventos
+        </button>
+      </li>
+      <li role="none">
+        <button role="menuitem">
+          <svg class="icon-bell" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+          Notificações
+        </button>
+      </li>
+      <li role="none">
+        <button role="menuitem">
+          <svg class="icon-heart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.95l-1-1a5.5 5.5 0 00-7.8 7.784l7.8 7.787 7.8-7.788a5.5 5.5 0 000-7.785z"/></svg>
+          Favoritos
+        </button>
+      </li>
+      <li role="none">
+        <button role="menuitem">
+          <svg class="icon-calendar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Meus Eventos
+        </button>
+      </li>
+      <li role="none">
+        <button role="menuitem">
+          <svg class="icon-user" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M5.5 21a7 7 0 0113 0"/></svg>
+          Perfil
+        </button>
+      </li>
+      <li role="none">
+        <button role="menuitem">
+          <svg class="icon-help" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 1-2 2-2 2"/><line x1="12" y1="17" x2="12" y2="17"/></svg>
+          Central de Ajuda
+        </button>
+      </li>
+    </ul>
 
-            <div class="feed-posts-container">
-                <div class="post-card">
-                    <div class="post-header">
-                        <img src="https://i.pinimg.com/1200x/cf/f0/85/cff0856affba5e16e9ce20f4414621e8.jpg" alt="Avatar de Maria Eduarda" class="avatar-sm">
-                        <div class="user-details">
-                            <strong>Maria Eduarda</strong>
-                            <p>Recife • 2h</p>
-                        </div>
-                        <i class="fas fa-ellipsis-h menu-icon"></i>
-                    </div>
-                    <div class="post-body">
-                        <p>Completei meu treino de corrida de 5km em 30 minutos!</p>
-                        <div class="post-image-container">
-                            <img src="https://i.pinimg.com/736x/e1/a0/0b/e1a00be8b14835ed7ae9a35ac5ce59a8.jpg" alt="Mulher correndo ao pôr do sol" class="post-image">
-                        </div>
-                    </div>
-                    <div class="post-actions">
-                        <a href="#"><i class="fas fa-comment"></i> Ver comentários</a>
-                        <div class="likes-shares">
-                            <i class="fas fa-heart liked"></i> 32
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                    </div>
-                    <div class="post-comment">
-                        <div class="comment-item">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs2-extra.glbimg.com%2FRRROEeOCC7U_JCz2L5qcTlvaF1s%3D%2F1180x0%2Fsmart%2Ffilters%3Astrip_icc()%2Fi.s3.glbimg.com%2Fv1%2FAUTH_1f551ea7087a47f39ead75f64041559a%2Finternal_photos%2Fbs%2F2024%2F0%2FJ%2F1xmDGkRP6e8ptcm35y0Q%2Fwhatsapp-image-2024-01-26-at-11.01.00.jpeg&f=1&nofb=1&ipt=35f72c14ab9332b23eaf46ab9533609a0ff237ce1c3a9e6a5e03b6627a4c83d7" alt="Avatar de Laura" class="avatar-xs">
-                            <div class="comment-content">
-                                <strong>Laura</strong> Parabéns, Duda!!
-                            </div>
-                        </div>
-                        <div class="add-comment">
-                            <input type="text" placeholder="Adicione um comentário">
-                            <i class="fas fa-paper-plane" style="color:var(--primary); margin-left:10px; cursor:pointer;"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="post-card">
-                    <div class="post-header">
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F6e%2F71%2F0e%2F6e710ed0cae7cc8d90119f95e55c764f.jpg&f=1&nofb=1&ipt=4645f1a0ffb70f4419445e453f4af3ea3498b58b016f6d2421e275422fbcd960" alt="Avatar de Emily Barbosa" class="avatar-sm">
-                        <div class="user-details">
-                            <strong>Emily Barbosa</strong>
-                            <p>Recife • 4h</p>
-                        </div>
-                        <i class="fas fa-ellipsis-h menu-icon"></i>
-                    </div>
-                    <div class="post-body">
-                        <p>Finalmente conquistei minha primeira medalha em uma corrida de 5km!</p>
-                    </div>
-                    <div class="post-actions">
-                        <a href="#"><i class="fas fa-comment"></i> Ver comentários</a>
-                        <div class="likes-shares">
-                            <i class="fas fa-heart"></i> 15
-                            <i class="fas fa-share-alt"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+    <button class="button-create-event" aria-label="Criar Evento">+ Criar Evento</button>
+    <!--Áreia do perfil/tambem é sair do perfil-->
+    <div class="user-area">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Avatar da Maria Eduarda" />
+      <div class="user-info">
+        <strong>Maria Eduarda</strong>
+        <small>@mariaeduarda</small>
+      </div> 
+    </div>
+    <div>
+      <button class="logout-button-with-icon" type="button" aria-label="Sair da conta">
+          <img src="/Coony-Transforme-se-/icon_rede/sair-alternativo.png" alt="Ícone de sair">
+          Sair
+        </button>
+    </div>
+       
+  </aside>
 
-        <aside class="right-sidebar-goony">
-            <div class="item-card-right search-marathon">
-                <h4>Buscar Maratona</h4>
-                <input type="text" placeholder="Buscar eventos...">
-                <i class="fas fa-search search-icon"></i>
-            </div>
+  <!-- ÁREA DO FEED -->
+  <main class="main-feed" role="main" aria-label="Feed principal">
+    <nav class="feed-tabs" role="tablist" aria-label="Navegação do feed">
+      <button role="tab" aria-selected="true" class="tab active" id="tab-feed">Feed</button>
+      <button role="tab" class="tab" id="tab-following">Seguindo</button>
+      <button role="tab" class="tab" id="tab-events">Eventos Para Mim</button>
+      <button role="tab" class="tab" id="tab-news">Novidades</button>
+      <button role="tab" class="tab" id="tab-trending">Em Alta</button>
+    </nav>
+    <!---Área do Feed fim-->
 
-            <div class="item-card-right follow-suggestions">
-                <h4>Sugestões para Seguir</h4>
-                <div class="suggestion-item">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1534528741775-53994a69daeb%3Fixlib%3Drb-1.2.1%26ixid%3DMnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ydHJhaXR8ZW58MHx8MHx8%26w%3D1000%26q%3D80&f=1&nofb=1&ipt=4645f1a0ffb70f4419445e453f4af3ea3498b58b016f6d2421e275422fbcd960" alt="Avatar de João Silva" class="avatar-xs">
-                    <div class="user-details">
-                        <strong>João Silva</strong>
-                        <p>Maratonista</p>
-                    </div>
-                    <button class="follow-btn">Seguir</button>
-                </div>
-                <div class="suggestion-item">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fexpertphotography.com%2Fwp-content%2Fuploads%2F2018%2F10%2Fbusiness-portrait-photography-studio.jpg&f=1&nofb=1&ipt=4645f1a0ffb70f4419445e453f4af3ea34998b58b016f6d2421e275422fbcd960" alt="Avatar de Ana Souza" class="avatar-xs">
-                    <div class="user-details">
-                        <strong>Ana Souza</strong>
-                        <p>Personal Trainer</p>
-                    </div>
-                    <button class="follow-btn">Seguir</button>
-                </div>
-                <a href="#" class="ver-mais">Ver mais</a>
-            </div>
-
-            <div class="item-card-right marathon-moments">
-                <h4>Momentos da Maratona</h4>
-                <p>Post 1 sobre o evento...</p>
-                <p>Post 2 sobre o evento...</p>
-                <p>Post 3 sobre o evento...</p>
-                <a href="#" class="ver-mais">Ver todos</a>
-            </div>
-        </aside>
-
+    <div class="post-success" role="alert" aria-live="assertive" style="display: none;">
+      Post criado com sucesso!
     </div>
 
-    <footer class="mobile-navbar-footer">
-        <a href="#" class="nav-item-mobile active"><i class="fas fa-home"></i></a>
-        <a href="#" class="nav-item-mobile"><i class="fas fa-running"></i></a>
-        <a href="#" class="nav-item-mobile plus"><i class="fas fa-plus-circle"></i></a>
-        <a href="#" class="nav-item-mobile"><i class="fas fa-bell"></i></a>
-        <a href="#" class="nav-item-mobile avatar-mobile">
-            <img src="https://i.pinimg.com/1200x/cf/f0/85/cff0856affba5e16e9ce20f4414621e8.jpg" alt="Seu avatar" class="avatar-xs">
-        </a>
-    </footer>
 
-    
+    <!-- Caixa de Compartilhar -->
+    <section class="share-box" aria-label="Compartilhar uma conquista">
+      <textarea rows="2" placeholder="Compartilhe a sua conquista..." class="share-textarea" id="post-text"></textarea>
+      <div class="share-actions">
+        <div class="share-icons" aria-label="Adicionar mídia ou localização">
+          <button type="button" aria-label="Adicionar foto" title="Adicionar foto" onclick="alert('Adicionar foto')">
+           <img src="/Coony-Transforme-se-/icon_rede/camera.png" alt="câmera" class="icon-post-like">
+          </button>
+          <button type="button" aria-label="Adicionar localização" title="Adicionar localização" onclick="alert('Adicionar localização')">
+           <img class="icon-home" src="/Coony-Transforme-se-/icon_rede/local.png" alt="localização">
+        </div>
+        <button class="share-button" id="post-button" disabled>Postar</button>
+      </div>
+    </section>
+    <!-- Caixa de Compartilhar Fim-->
+
+    <!-- Post 1 -->
+    <article class="post" aria-label="Post de Maria Eduarda">
+      <header class="post-header">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria Eduarda" />
+        <div>
+          <div>Maria Eduarda</div>
+          <time datetime="PT2H">Recife · 2h</time>
+        </div>
+      </header>
+      <p class="post-content">Completei meu treino de corrida de 5km em 30 minutos!</p>
+      <img class="post-image" src="https://www2.recife.pe.gov.br/sites/default/files/styles/imagem_slide_home/public/mdie_0010_21.jpg?itok=Tqiu67Ll" alt="Maria Eduarda completando treino de corrida" />
+      <!---icon do post-->
+      <footer class="post-footer">
+        <button type="button" aria-label="Ver 35 comentários">
+          <img class="icon-post-comment" src="/Coony-Transforme-se-/icon_rede/like.png" alt="Comentários">35
+        </button>
+        <button type="button" aria-label="40 likes">
+          <img src="/Coony-Transforme-se-/icon_rede/comentario.png" alt="Curtir" class="icon-post-like">40
+        </button>
+        <button type="button" aria-label="Compartilhar post">
+          <img src="/Coony-Transforme-se-/icon_rede/enviar.png" alt="Compartilhar"class="icon-post-share">
+      </footer>
+      <!---icon do post Fim-->
+
+
+      <!---comentários dos amigos-->
+      <section class="comment-section" aria-label="Comentários">
+        <div class="comment">
+          <strong>Thiago_Reidelas:</strong> Parabéns,gatinha!!proxima meta:10km!
+          <div class="comment-actions">
+            <span role="button" tabindex="0">Responder</span>
+            <span role="button" tabindex="0">Curtir</span>
+          </div>
+        </div>
+        <div class="comment-input-box">
+          <input class="comment-input" type="text" placeholder="Adicione um comentário" aria-label="Adicionar comentário" />
+          <button class="comment-send" disabled aria-label="Enviar comentário">Enviar</button>
+        </div>
+      </section>
+      <!---comentários dos amigos Fim-->
+    </article>
+
+    <!-- Post 2 -->
+    <article class="post" aria-label="Post de Emily Barbosa">
+      <header class="post-header">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Barbosa" />
+        <div>
+          <div>Emily Barbosa</div>
+          <time datetime="PT4H">Recife · 4h</time>
+        </div>
+      </header>
+      <p class="post-content">Finalmente conquistei minha primeira medalha em uma corrida de 5km!</p>
+      <img class="post-image" src="https://cdn.folhape.com.br/img/pc/780/780/dn_arquivo/2024/12/whatsapp-image-2024-12-26-at-080122.jpeg?c=1" alt="Emily Barbosa recebendo medalha de corrida" />
+      <footer class="post-footer">
+        <button type="button" aria-label="Ver 50 comentários">
+          <img class="icon-post-comment" src="/Coony-Transforme-se-/icon_rede/like.png" alt="Comentários">50
+        </button>
+        <button type="button" aria-label="32 likes">
+          <img src="/Coony-Transforme-se-/icon_rede/comentario.png" alt="Curtir" class="icon-post-like">32
+        </button>
+        <button type="button" aria-label="Compartilhar post">
+          <img src="/Coony-Transforme-se-/icon_rede/enviar.png" alt="Compartilhar"class="icon-post-share">
+      </footer>
+      <section class="comment-section" aria-label="Comentários">
+        <div class="comment">
+          <strong>Marcos:</strong> Parabéns, Emily!!
+          <div class="comment-actions">
+            <span role="button" tabindex="0">Responder</span>
+            <span role="button" tabindex="0">Curtir</span>
+          </div>
+        </div>
+        <div class="comment-input-box">
+          <input class="comment-input" type="text" placeholder="Adicione um comentário" aria-label="Adicionar comentário" />
+          <button class="comment-send" disabled aria-label="Enviar comentário">Enviar</button>
+        </div>
+      </section>
+    </article>
+
+    <!-- Post 3 -->
+     <article class="post" aria-label="Post de guto">
+      <header class="post-header">
+        <img src="/Coony-Transforme-se-/img/gutosv.jpg" alt="Guto" />
+        <div>
+          <div>guto</div>
+          <time datetime="PT4H">Recife · 5h</time>
+        </div>
+      </header>
+      <p class="post-content">Como ainda estou aprendendo a correr, acabo correndo um pouco desengonçado.</p>
+      <img class="post-image" src="/Coony-Transforme-se-/img/guto.png" alt="Foto de guto correndo" />
+      <footer class="post-footer">
+        <button type="button" aria-label="Ver 500 comentários">
+          <img class="icon-post-comment" src="/Coony-Transforme-se-/icon_rede/like.png" alt="Comentários">500
+        </button>
+        <button type="button" aria-label="120 likes">
+          <img src="/Coony-Transforme-se-/icon_rede/comentario.png" alt="Curtir" class="icon-post-like">120
+        </button>
+        <button type="button" aria-label="Compartilhar post">
+          <img src="/Coony-Transforme-se-/icon_rede/enviar.png" alt="Compartilhar"class="icon-post-share">
+      </footer>
+      <section class="comment-section" aria-label="Comentários">
+        <div class="comment">
+          <strong>Gabriel:</strong> Parabéns, Guto!!
+          <div class="comment-actions">
+            <span role="button" tabindex="0">Responder</span>
+            <span role="button" tabindex="0">Curtir</span>
+          </div>
+        </div>
+        <div class="comment-input-box">
+          <input class="comment-input" type="text" placeholder="Adicione um comentário" aria-label="Adicionar comentário" />
+          <button class="comment-send" disabled aria-label="Enviar comentário">Enviar</button>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- SIDEBAR DIREITA -->
+  <aside class="sidebar-right" aria-label="Sugestões para seguir">
+    <div class="search-box">
+      <input type="search" placeholder="Buscar maratonas" aria-label="Buscar maratonas" />
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" />
+        <line x1="16.5" y1="16.5" x2="21" y2="21" />
+      </svg>
+    </div>
+
+    <div>
+      <h2 class="whom-to-follow">Quem Acompanhar</h2>
+      <div class="follow-list">
+        <div class="follow-item">
+          <div class="follow-info">
+            <img src="https://randomuser.me/api/portraits/women/50.jpg" alt="Maria Alice" />
+            <div class="follow-names">
+              <strong>Maria Alice</strong>
+              <span>@juju_ba</span>
+            </div>
+          </div>
+          <button class="follow-button" type="button">Seguir</button>
+        </div>
+        <div class="follow-item">
+          <div class="follow-info">
+            <img src="https://randomuser.me/api/portraits/women/51.jpg" alt="Methues Henrique" />
+            <div class="follow-names">
+              <strong>Methues.H</strong>
+              <span>@mathueADS</span>
+            </div>
+          </div>
+          <button class="follow-button" type="button">Seguir</button>
+        </div>
+        <div class="follow-item">
+          <div class="follow-info">
+            <img src="https://randomuser.me/api/portraits/men/39.jpg" alt="Luis Fernando" />
+            <div class="follow-names">
+              <strong>Luis.FF</strong>
+              <span>@ferna_gera</span>
+            </div>
+          </div>
+          <button class="follow-button" type="button">Seguir</button>
+        </div>
+        <div class="follow-item">
+          <div class="follow-info">
+            <img src="https://randomuser.me/api/portraits/men/48.jpg" alt="Thiago Santana" />
+            <div class="follow-names">
+              <strong>Thiago.S</strong>
+              <span>@toic_2000</span>
+            </div>
+          </div>
+          <button class="follow-button" type="button">Seguir</button>
+        </div>
+      </div>
+      <div class="see-more" role="button" tabindex="0">Ver mais</div>
+    </div>
+
+    <div class="trending-runs">
+      Corridas do Momento
+    </div>
+  </aside>
+
+  <script>
+    // Ativa o botão "Postar" somente se houver texto escrito
+    const postText = document.getElementById('post-text');
+    const postButton = document.getElementById('post-button');
+    postText.addEventListener('input', () => {
+      postButton.disabled = postText.value.trim() === '';
+    });
+
+    // Ao clicar no botão postar, mostra mensagem de sucesso por 3s e limpa textarea
+    postButton.addEventListener('click', () => {
+      const successMsg = document.querySelector('.post-success');
+      if(postText.value.trim() !== '') {
+        successMsg.style.display = 'block';
+        setTimeout(() => (successMsg.style.display = 'none'), 3000);
+        postText.value = '';
+        postButton.disabled = true;
+      }
+    });
+
+    // Controla ativação dos botões de comentário (exemplo simples para uma área só)
+    const commentInput = document.querySelector('.comment-input');
+    const commentSend = document.querySelector('.comment-send');
+    commentInput.addEventListener('input', () => {
+      commentSend.disabled = commentInput.value.trim() === '';
+    });
+
+    // Funcionalidade básica para o enviar comentário (alerta e limpa)
+    commentSend.addEventListener('click', () => {
+      if (commentInput.value.trim() !== '') {
+        alert(`Comentário enviado: ${commentInput.value.trim()}`);
+        commentInput.value = '';
+        commentSend.disabled = true;
+      }
+    });
+  </script>
 </body>
-</html>
