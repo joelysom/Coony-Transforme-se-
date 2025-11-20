@@ -9,38 +9,41 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper"> <!-- Wrapper padrão que utilizo para deixar cabeçalhos e rodapés fixos no inicio e final da página -->
         
-        <header>
-            <div class="icon">
+        <header> <!-- Cabeçalho da página -->
+            <div class="icon"> <!-- div do icone de retornar -->
                 <a href="#">
                     <img src="../../img/seta-retornar.svg" alt="retornar">
                 </a>
             </div>
-            <div class="text-header">
+
+            <div class="text-header"> <!-- div do texto de cabeçalho da página -->
                 <p>Cadastro de Empresas e Profissionais</p>
             </div>
-            <div class="help-icon">
+
+            <div class="help-icon"> <!-- div do icone de ajuda da página -->
                 <a href="#">
                     <img src="../../img/botao-help.svg" alt="botao-help">
                 </a>
             </div>
         </header>
-        <main>
-            <div class="options">
+
+        <main> <!-- Tag do conteúdo principal -->
+            <div class="options"> <!-- Opções da cadastros -->
                 <select name="select" id="select">
-                    <option value="#" disabled selected hidden>Selecione os tipos de cadastros</option>
+                    <option value="#" disabled selected hidden>Selecione os tipos de cadastros</option> <!-- Opção padrão desbilitada -->
                     <option value="Profissional">Profissional</option>
                     <option value="Empresa">Empresa</option>
                     <option value="Mei">Mei</option>
                 </select>
             </div>
-            <form action="#">
-                <div class="labels">
+            <form action="#"> <!-- Tag do formulário da página -->
+                <div class="labels"> <!-- Tags padrões de labels para manipular com mais precisão cada elemento e labels -->
                     <label for="cpf-cnpj">Informe seu CPF/CNPJ:</label>
                 </div>
-                <input type="text" name="cpf-cnpj" class="form-input">
-                <div class="labels">
+                <input type="text" name="cpf-cnpj" class="form-input"> <!-- inputs -->
+                <div class="labels">                                   <!-- Mesmo padrão se repete até as checkbox -->
                     <label for="nome">Informe seu nome ou nome da sua empresa:</label>
                 </div>
                 <input type="text" name="nome" class="form-input">
@@ -60,31 +63,33 @@
                     <label for="confirmar-senha">Informe novamente a senha:</label>
                 </div>
                 <input type="password" name="confirmar-senha" class="form-input">
-                <div class="termos">
-                    <div class="termos-de-uso">
-                        <input type="checkbox" name="termos-de-uso" id="termos-de-uso">
-                        <span id="box-uso"></span>
 
-                        <label for="termos-de-uso">Li e aceito os termos de uso</label>
+                <div class="termos"> <!-- Campo dos termos -->
+                    <div class="termos-de-uso">
+                        <input type="checkbox" name="termos-de-uso" id="termos-de-uso"> <!-- checkbox escondida -->
+                        <span id="box-uso"></span> <!-- Box customizada com span -->
+
+                        <label for="termos-de-uso">Li e aceito os termos de uso</label> <!-- Label simples -->
                     </div>
                     <div class="uso-de-dados">
-                        <input type="checkbox" name="uso-de-dados" id="uso-de-dados">
-                        <span id="box-dados"></span>
+                        <input type="checkbox" name="uso-de-dados" id="uso-de-dados"> <!-- checkbox escondida -->
+                        <span id="box-dados"></span> <!-- Box customizada com span -->
 
-                        <label for="uso-de-dados">Li e autorizo uso de dados</label>
+                        <label for="uso-de-dados">Li e autorizo uso de dados</label> <!-- Label simples -->
                     </div> 
                 </div>
             </form>
-            <div class="button-next">
+            <div class="button-next"> <!-- Botão -->
                 <button>Próximo</button>
             </div>
         </main>
     </div>
 
+    <!-- Javascript simples para alterar o checked das checkbox após clicar na tag span -->
     <script>
         const checkUso = document.getElementById("termos-de-uso");
-        const checkDados = document.getElementById("uso-de-dados");
         const boxUso = document.getElementById("box-uso");
+        const checkDados = document.getElementById("uso-de-dados");
         const boxDados = document.getElementById("box-dados");
 
         boxUso.addEventListener("click", () => {
