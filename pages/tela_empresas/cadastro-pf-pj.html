@@ -5,55 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastros</title>
+    <link rel="stylesheet" href="../../css/cadastro-pf-pj.css">
 </head>
 
 <body>
-    <header>
-        <div class="icon">
-            <p>Icone</p>
-        </div>
-
-        <div class="text-header">
-            <p>Cadastro de Empresas e Profissionais</p>
-        </div>
-
-        <div class="help-icon">
-            <p>Icons</p>
-        </div>
-    </header>
-
-    <main>
-        <div class="options">
-            <select name="select" id="select">
-                <option value="Júridica">Pessoa júridica</option>
-                <option value="Fisica">Pessoa fisica</option>
-            </select>
-        </div>
-
-        <form action="#">
-            <div class="labels">
+    <div class="wrapper">
+        
+        <header>
+            <div class="icon">
+                <p>Icone</p>
             </div>
-            <input type="">
-
-            <div class="labels"></div>
-            <input type="text">
-
-            <div class="labels"></div>
-            <input type="text">
-
-            <div class="labels"></div>
-            <input type="text">
-
-            <div class="labels"></div>
-            <input type="text">
-
-            <div class="labels"></div>
-            <input type="text">
-
-            <input type="checkbox" name="termos" id="termos">
-            <input type="checkbox" name="termos" id="termos">
-        </form>
-    </main>
+            <div class="text-header">
+                <p>Cadastro de Empresas e Profissionais</p>
+            </div>
+            <div class="help-icon">
+                <p>Icons</p>
+            </div>
+        </header>
+        <main>
+            <div class="options">
+                <select name="select" id="select">
+                    <option value="Júridica">Pessoa júridica</option>
+                    <option value="Fisica">Pessoa fisica</option>
+                </select>
+            </div>
+            <form action="#">
+                <div class="labels">
+                    <label for="cpf-cnpj">Informe seu CPF/CNPJ:</label>
+                </div>
+                <input type="text" name="cpf-cnpj" class="form-input">
+                <div class="labels">
+                    <label for="nome">Informe seu nome ou nome da sua empresa:</label>
+                </div>
+                <input type="text" name="nome" class="form-input">
+                <div class="labels">
+                    <label for="email">Email:</label>
+                </div>
+                <input type="text" name="email" class="form-input">
+                <div class="labels">
+                    <label for="contato">Informe seu telefone/celular:</label>
+                </div>
+                <input type="text" name="contato" class="form-input">
+                <div class="labels">
+                    <label for="senha">Informe uma senha:</label>
+                </div>
+                <input type="text" name="senha" class="form-input">
+                <div class="labels">
+                    <label for="confirmar-senha">Informe novamente a senha:</label>
+                </div>
+                <input type="text" name="confirmar-senha" class="form-input">
+                <div class="termos">
+                    <div class="termos-de-uso">
+                        <input type="checkbox" name="termos-de-uso" id="termos-de-uso">
+                        <label for="termos-de-uso">Li e aceito os termos de uso</label>
+                    </div>
+                    <div class="uso-de-dados">
+                        <input type="checkbox" name="uso-de-dados" id="uso-de-dados">
+                        <label for="uso-de-dados">Li e autorizo uso de dados</label>
+                    </div> 
+                </div>
+            </form>
+            <div class="button-next">
+                <button>Próximo</button>
+            </div>
+        </main>
+    </div>
 </body>
 
 </html>
