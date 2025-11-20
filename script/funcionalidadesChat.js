@@ -232,14 +232,6 @@ const chatEl = document.querySelector(".chat");
 const voltarBtn = document.querySelector(".voltarBtn");
 const listaContatos = document.getElementById("lista");
 
-/* Quando clicar em um contato, abre o chat */
-listaContatos.addEventListener("click", () => {
-  if (window.innerWidth <= 768) {
-    contatosEl.classList.add("escondido");
-    chatEl.classList.add("ativo");
-  }
-});
-
 /* Botão voltar */
 voltarBtn.addEventListener("click", () => {
   contatosEl.classList.remove("escondido");
@@ -256,15 +248,6 @@ function isMobile() {
   return window.innerWidth <= 768;
 }
 
-// Ao clicar em um contato, abri o chat e esconder contatos (APENAS NO MOBILE)
-document.addEventListener("click", (e) => {
-  if (e.target.closest(".contact-card")) {
-    if (isMobile()) {
-      sidebar.style.display = "none";
-      chatArea.style.display = "flex";
-    }
-  }
-});
 
 // Botão de voltar, volta para lista de contatos
 voltarBtn.addEventListener("click", () => {
@@ -280,5 +263,162 @@ window.addEventListener("resize", () => {
     // no computador, tudo aparece
     sidebar.style.display = "block";
     chatArea.style.display = "flex";
+  }
+});
+
+
+/* ---------- DADOS MOCK ---------- */
+const contatosMock = [
+  { nome: "Layza", avatar: "https://i.pravatar.cc/48?img=1", ultima: "Oi, tudo bem?", unread: 2 },
+  { nome: "Bruno Dias", avatar: "https://i.pravatar.cc/48?img=2", ultima: "Até mais!", unread: 5 },
+  { nome: "Carla Souza", avatar: "https://i.pravatar.cc/48?img=3", ultima: "Você viu o email?", unread: 1 },
+  { nome: "Diego Rocha", avatar: "https://i.pravatar.cc/48?img=4", ultima: "Bora marcar?", unread: 4 },
+  { nome: "Evelyn Lima", avatar: "https://i.pravatar.cc/48?img=5", ultima: "😂😂", unread: 3 },
+  { nome: "Felipe Araújo", avatar: "https://i.pravatar.cc/48?img=6", ultima: "Ok, combinado.", unread: 0 },
+  { nome: "Giovanna M.", avatar: "https://i.pravatar.cc/48?img=7", ultima: "Te ligo depois.", unread: 0 },
+  { nome: "Henrique S.", avatar: "https://i.pravatar.cc/48?img=8", ultima: "Valeu!", unread: 5 }
+];
+
+/* ---------- UTILS ---------- */
+const $ = (s) => document.querySelector(s);
+const LS_KEY = "coony_chat_contato";
+
+/* ELEMENTOS */
+
+const chat = document.querySelector(".chat-app");
+
+/* ---------- TELA CONTATOS ---------- */
+function initContatos() {
+  const lista = $("#lista");
+  const busca = $("#busca");
+
+  function renderiza(filtro = "") {
+    lista.innerHTML = "";
+
+    contatosMock
+      .filter((c) => c.nome.toLowerCase().includes(filtro.toLowerCase()))
+      .forEach((c) => {
+        const li = document.createElement("li");
+        li.className = "contact-card";
+
+        li.innerHTML = `
+          <img src="${c.avatar}" alt="${c.nome}" class="contact-card__avatar">
+          <div class="contact-card__info">
+            <div class="contact-card__name">${c.nome}</div>
+            <div class="contact-card__last">${c.ultima}</div>
+          </div>
+          ${c.unread > 0 ? `<span class="contact-card__badge">${c.unread}</span>` : ''}
+        `;
+
+        // ABRIR CHAT AO CLICAR
+        li.onclick = () => {
+          c.unread = 0;
+          localStorage.setItem(LS_KEY, JSON.stringify(c));
+          abrirChat(c);
+        };
+
+        lista.appendChild(li);
+      });
+  }
+
+  renderiza();
+  busca.oninput = () => renderiza(busca.value);
+}
+
+/* ---------- ABRIR CHAT (CORRIGIDO) ---------- */
+function abrirChat(contato) {
+  const headerImg = document.querySelector(".chat-header .user img");
+  const headerNome = document.querySelector(".chat-header .user-info h3");
+  const mensagem = document.querySelector(".received"); 
+  const sidebar = document.querySelector(".sidebar.contatos");
+  const chat = document.querySelector(".chat-app");
+
+  // atualizar o topo do chat
+  headerImg.src = contato.avatar;
+  headerNome.textContent = contato.nome;
+
+  // Mensagem correta
+  mensagem.innerHTML = `
+    <div class="message received">
+      <img src="${contato.avatar}" alt="${contato.nome}" class="avatar">
+      <div class="bubble">
+        <h3>${contato.nome}</h3>
+        <p>oi!</p>
+      </div>
+      <span class="time">20:30</span>
+    </div>
+  `;
+
+  // MODO MOBILE
+  if (window.innerWidth <= 768) {
+    sidebar.classList.add("escondido");  // esconde a lista
+    chat.classList.add("ativo");         // mostra o chat
+  }
+}
+
+/* ---------- BOTÃO VOLTAR ---------- */
+voltarBtn.addEventListener("click", () => {
+  if (window.innerWidth <= 768) {
+    sidebar.classList.remove("escondido");
+    chat.classList.remove("ativo");
+  }
+});
+
+/* ---------- RESPONSIVIDADE ---------- */
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    sidebar.classList.remove("escondido");
+    chat.classList.add("ativo");
+  }
+});
+
+/* ---------- ROTEAMENTO ---------- */
+window.onload = () => {
+  if (location.pathname.includes("tela-chat.html")) {
+    initContatos();
+  }
+};
+ /* ===============================
+   CONTATOS → ABRIR CHAT (MOBILE E DESKTOP)
+================================ */
+
+/* Detecta se está no mobile */
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
+/* ABRIR CHAT AO CLICAR NO CONTATO */
+document.addEventListener("click", (e) => {
+  const card = e.target.closest(".contact-card");
+  if (!card) return;
+
+  // Evita bugs de duplo clique
+  const nome = card.querySelector(".contact-card__name")?.textContent;
+  const avatar = card.querySelector(".contact-card__avatar")?.src;
+
+  // Atualiza cabeçalho
+  document.querySelector(".chat-header .user img").src = avatar;
+  document.querySelector(".chat-header .user-info h3").textContent = nome;
+
+  // Quando for mobile → troca para tela do chat
+  if (isMobile()) {
+    sidebar.classList.add("escondido"); 
+    chatArea.classList.add("ativo");
+  }
+});
+
+/* VOLTAR PARA LISTA DE CONTATOS */
+voltarBtn.addEventListener("click", () => {
+  if (isMobile()) {
+    sidebar.classList.remove("escondido");
+    chatArea.classList.remove("ativo");
+  }
+});
+
+/* RESPONSIVIDADE (quando gira tela) */
+window.addEventListener("resize", () => {
+  if (!isMobile()) {
+    sidebar.classList.remove("escondido");
+    chatArea.classList.add("ativo");
   }
 });
