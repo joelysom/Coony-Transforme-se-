@@ -387,38 +387,13 @@ function isMobile() {
   return window.innerWidth <= 768;
 }
 
-/* ABRIR CHAT AO CLICAR NO CONTATO */
-document.addEventListener("click", (e) => {
-  const card = e.target.closest(".contact-card");
-  if (!card) return;
+/* Trocas de telas no mobile */
+let contato = document.querySelector(".contacts-list")
+contato.addEventListener("click", e=>{
 
-  // Evita bugs de duplo clique
-  const nome = card.querySelector(".contact-card__name")?.textContent;
-  const avatar = card.querySelector(".contact-card__avatar")?.src;
-
-  // Atualiza cabeçalho
-  document.querySelector(".chat-header .user img").src = avatar;
-  document.querySelector(".chat-header .user-info h3").textContent = nome;
-
-  // Quando for mobile → troca para tela do chat
   if (isMobile()) {
-    sidebar.classList.add("escondido"); 
-    chatArea.classList.add("ativo");
+    sidebar.style.display= "none";
+    chatArea.style.display= "flex";
   }
-});
 
-/* VOLTAR PARA LISTA DE CONTATOS */
-voltarBtn.addEventListener("click", () => {
-  if (isMobile()) {
-    sidebar.classList.remove("escondido");
-    chatArea.classList.remove("ativo");
-  }
-});
-
-/* RESPONSIVIDADE (quando gira tela) */
-window.addEventListener("resize", () => {
-  if (!isMobile()) {
-    sidebar.classList.remove("escondido");
-    chatArea.classList.add("ativo");
-  }
-});
+})
