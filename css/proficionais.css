@@ -63,13 +63,12 @@
   height: 48px;
   padding: 8px 18px;
   border-radius: 26px;
-  border: 2px solid rgba(237,108,75,0.95); /* laranja */
+  border: 2px solid rgba(211, 201, 198, 0.95); /* laranja */
   background: var(--white);
 
   /* sombra bonita */
-  box-shadow:
-    0 8px 14px rgba(0,0,0,0.12),
-    0 2px 0 rgba(0,0,0,0.06) inset;
+ 
+   
 
   font-size: 15px;
   color: var(--text-dark);
@@ -155,26 +154,20 @@ word-break: keep-all;    /* não quebra palavras ao meio */
 /* ============================================================
    BOTÕES CIRCULARES (voltar / ajuda)
 ============================================================ */
-.icon-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: transparent;
-  border: 2px solid var(--black);
-  font-size: 22px;
-  color: var(--text-dark);
-  cursor: pointer;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
-  transition: 0.2s;
+/* Botão de Voltar (Seta Ícone) */
+.btn-voltar {
+    color: var(--color-primary); /* Usa o laranja #ED864B */
+    font-size: 24px;             /* Tamanho do ícone */
+    text-decoration: none;       /* Remove o sublinhado */
+    display: inline-block;       /* Garante comportamento correto */
+    transition: transform 0.2s, color 0.2s;
+    cursor: pointer;
+    margin-bottom: 1rem;         /* Espacinho abaixo dele */
 }
 
-.icon-btn:hover {
-  background: rgba(0,0,0,0.05);
+.btn-voltar:hover {
+    color: #d8763f;              /* Fica um pouco mais escuro no hover */
+    transform: translateX(-4px); /* Efeito visual: move levemente para esquerda */
 }
 
 
