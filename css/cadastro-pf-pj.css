@@ -207,3 +207,41 @@ main form .labels {
 
     cursor: pointer;
 }
+
+.page-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.3rem;
+}
+
+.image-page {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.info-page {
+    display: flex;
+    height: 2.25rem;
+    border-radius: 10px;
+    border: solid;
+    border-width: 1.5px;
+    border-color: var(--black);
+    box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.2);
+    outline: none;
+    padding: 0 10px;
+    width: 16rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-page img {
+    width: 12rem;
+    border: var(--black) solid 1px;
+    border-radius: 13px;
+}
+
+.logo-info-page {
+    width: 76px;
+}
