@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Específicos - Coony</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/telaempresa.css">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <a href="#" class="nav-link" aria-label="Voltar">←</a>
+        <h1>Informações para Negócios Esportivos</h1>
+        <a href="#" class="nav-link" aria-label="Ajuda">?</a>
+    </header>
+
+    <!-- Formulário -->
+    <div class="main-content-scrollable-area">
+        <div class="content-area">
+            <form>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço da Sede / Ponto de Encontro:</label>
+                    <input type="text" id="endereco" placeholder="Rua, número, bairro..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="atuacao">Área de atuação no esporte:</label>
+                    <input type="text" id="atuacao" placeholder="Ex: Corrida, Dança, Funcional, Ciclismo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="publico_alvo">Público-alvo das suas atividades:</label>
+                    <input type="text" id="publico_alvo" placeholder="Ex: Jovens, terceira idade, iniciantes" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Website ou rede social:</label>
+                    <input type="url" id="website" placeholder="https://seuperfil.com">
+                </div>
+
+                <div class="file-upload-container">
+                    <label for="upload_arquivo">Logotipo / imagem do negócio:</label>
+                    <input type="file" id="upload_arquivo" accept="image/*">
+
+                    <label for="upload_arquivo" class="upload-button button-style" role="button" tabindex="0">
+                        <span id="upload-icon-target"></span>
+                        Enviar arquivo
+                    </label>
+                </div>
+
+                <a href="#" class="finish-button button-style" role="button">
+                    Finalizar →
+                </a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="coony-logo">COONY</div>
+        <nav>
+            <a href="#">Sobre</a>
+            <a href="#">Ajuda</a>
+            <a href="#">Política</a>
+            <a href="#">Privacidade</a>
+        </nav>
+        <p>Coony &copy; 2025</p>
+    </footer>
+
+
+    <script>
+        const uploadIconSVG = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                 <polyline points="17 8 12 3 7 8"/>
+                 <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+        `;
+
+        // Coloca o SVG no lugar certo quando a página carrega
+        document.addEventListener('DOMContentLoaded', () => {
+            const target = document.getElementById('upload-icon-target');
+            if (target) {
+                target.innerHTML = uploadIconSVG;
+            }
+        });
+    </script>
+
+</body>
+</html>
