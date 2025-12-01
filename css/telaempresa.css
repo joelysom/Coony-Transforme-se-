@@ -1,0 +1,236 @@
+:root {
+    --primary: #ED6C4B; 
+    --primary-dark: #DE603E;
+
+    --bg: #F3F0EB; 
+    --card: #FFFFFF; 
+
+    --text: #2C2C2C;
+    --text-secondary: #898989;
+
+    --border: #E6E6E6;
+
+    --r-input: 12px;
+    --r-btn: 12px;
+
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --max-width: 600px;
+    --header-height: 64px;
+}
+
+/* Reset - Body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    background-color: var(--bg);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+header h1 {
+    font-family: var(--font-title);
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Navegacao */
+.nav-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 5px;
+    line-height: 1;
+}
+
+
+/* Main Content */
+.main-content-scrollable-area {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: var(--header-height) auto 0; 
+    padding: 24px 20px 120px; 
+    box-sizing: border-box;
+    overflow-y: auto;
+    min-height: calc(100vh - 64px - 120px); 
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-group input {
+    height: 48px;
+    border-radius: var(--r-input);
+    border: 1px solid var(--border);
+    padding: 0 16px;
+    font-size: 1rem;
+    background: var(--card);
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.form-group input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* Estilo Botão */
+.button-style {
+    height: 52px;
+    border-radius: var(--r-btn);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+/* Botão (Finalizar) */
+.finish-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    margin-top: 20px;
+}
+
+.finish-button:hover {
+    background: var(--primary-dark);
+}
+
+/* Botão (Upload) */
+#upload_arquivo {
+    display: none; 
+}
+
+.upload-button {
+    background: var(--card);
+    color: var(--text);
+    border: 2px solid var(--border); 
+    
+    gap: 10px;
+}
+
+.upload-button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.upload-button svg {
+    height: 20px;
+    width: 20px;
+    stroke: currentColor; }
+
+
+/* Footer */
+footer {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+
+    padding: 16px 0;
+    text-align: center;
+
+    background-color: var(--bg);
+    border-top: 1px solid rgba(0,0,0,0.06);
+
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.coony-logo {
+    font-family: var(--font-title);
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+footer nav {
+    margin: 8px 0;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+footer nav a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    header, footer {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .main-content-scrollable-area {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
